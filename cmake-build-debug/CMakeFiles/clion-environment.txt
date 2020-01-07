@@ -1,0 +1,4 @@
+ToolSet: w64 6.0 (local)@C:\Users\ASUS\Desktop\mingw32
+Options: 
+
+Options:

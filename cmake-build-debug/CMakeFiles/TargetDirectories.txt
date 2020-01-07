@@ -1,0 +1,3 @@
+C:/Matam/HW3/cmake-build-debug/CMakeFiles/HW3.dir
+C:/Matam/HW3/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Matam/HW3/cmake-build-debug/CMakeFiles/rebuild_cache.dir
