@@ -11,7 +11,7 @@ class UniqueArray {
     unsigned int size;
     Element** arr;
     int next;
-    Compare compare;
+    const Compare compare;
 
 public:
 

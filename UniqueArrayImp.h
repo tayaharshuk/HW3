@@ -39,7 +39,7 @@ unsigned int UniqueArray<Element, Compare>::insert(const Element &element) {
 }
 
 template<class Element, class Compare>
-UniqueArray<Element, Compare>::UniqueArray(unsigned int size) : size(size){
+UniqueArray<Element, Compare>::UniqueArray(unsigned int size) : size(size), compare(){
     try{
         arr = new Element*[size];
         next = 0;

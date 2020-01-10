@@ -19,6 +19,8 @@ public:
     double GetNumber() const {return number;}
 };
 
+
+
 class TestCompare{
 public:
     bool operator()(const TestClass& a, const TestClass& b) const {
