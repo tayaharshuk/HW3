@@ -3,23 +3,31 @@
 
 #include <cstdio>
 #include <functional>
+#include "UniqueArrayExceptions.h"
+
 
 template <class Element, class Compare = std::equal_to<Element>>
 class UniqueArray {
     unsigned int size;
-    Element* arr;
-    bool* isAvailable;
+    Element** arr;
+    int next;
+    Compare compare;
 
 public:
 
     UniqueArray(unsigned int size);
     UniqueArray(const UniqueArray& other);
+
     ~UniqueArray();
     UniqueArray& operator=(const UniqueArray&) = delete;
     unsigned int insert(const Element& element);
+
     bool getIndex(const Element& element, unsigned int& index) const;
+
     const Element* operator[] (const Element& element) const;
+
     bool remove(const Element& element);
+
     unsigned int getCount() const;
     unsigned int getSize() const;
 
@@ -27,20 +35,25 @@ public:
     public:
         virtual bool operator() (const Element&) const = 0;
     };
-    UniqueArray filter(const Filter& f) const;
+    UniqueArray filter(const Filter& f) const{
+        UniqueArray newArr(*this);
 
-    class UniqueArrayIsFullException{};
+        for (int i = 0; i < size ; i++) {
+            if (arr[i] != NULL && !f(*arr[i])){
+                  newArr.remove(*(newArr.arr[i]));
+            }
+        }
+        return newArr;
+    }
+
+class UniqueArrayIsFullException : public std::exception{
+public:
+    const char *what() const noexcept override {
+        return "Array is full";
+    }
+};
     
 };
-
-template<class Element, class Compare>
-UniqueArray<Element, Compare>::UniqueArray(unsigned int size) : size(size){
-    arr = new Element[size];
-    isAvailable = new bool[size];
-    for (int i = 0; i < size ; ++i) {
-        isAvailable[i] = false;
-    }
-}
 
 #include "UniqueArrayImp.h"
 
