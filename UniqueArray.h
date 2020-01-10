@@ -35,6 +35,7 @@ public:
     public:
         virtual bool operator() (const Element&) const = 0;
     };
+
     UniqueArray filter(const Filter& f) const{
         UniqueArray newArr(*this);
 
@@ -46,12 +47,11 @@ public:
         return newArr;
     }
 
-class UniqueArrayIsFullException : public std::exception{
-public:
-    const char *what() const noexcept override {
-        return "Array is full";
-    }
-};
+    class UniqueArrayIsFullException : public std::exception{
+        const char *what() const noexcept override {
+            return "Array is full";
+        }
+    };
     
 };
 

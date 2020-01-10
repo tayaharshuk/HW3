@@ -19,6 +19,7 @@ bool UniqueArray<Element, Compare>::remove(const Element &element) {
 //TODO
 template<class Element, class Compare>
 unsigned int UniqueArray<Element, Compare>::insert(const Element &element) {
+    unsigned int index = next;
     for ( int i = 0 ; i < size ; i++){
         if (arr[i] != NULL && compare(*arr[i],element)){ //is not empty
             return i;
@@ -35,7 +36,8 @@ unsigned int UniqueArray<Element, Compare>::insert(const Element &element) {
         throw OutOfMemory(__LINE__);
     }
 
-    while ( next<size && arr[next++] != NULL);
+    while ( next<size && arr[++next] != NULL);
+    return index;
 }
 
 template<class Element, class Compare>
@@ -88,7 +90,7 @@ bool UniqueArray<Element, Compare>::getIndex(const Element &element,
 
 template<class Element, class Compare>
 const Element *UniqueArray<Element, Compare>::operator[](const Element &element) const {
-    int index;
+    unsigned int index;
     if(!getIndex(element, index)){
         return NULL;
     }
