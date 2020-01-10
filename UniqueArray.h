@@ -1,8 +1,15 @@
 #ifndef MTMPARKINGLOT_UNIQUEARRAY_H
 #define MTMPARKINGLOT_UNIQUEARRAY_H
 
+#include <cstdio>
+#include <functional>
+
 template <class Element, class Compare = std::equal_to<Element>>
 class UniqueArray {
+    unsigned int size;
+    Element* arr;
+    bool* isAvailable;
+
 public:
 
     UniqueArray(unsigned int size);
@@ -26,7 +33,17 @@ public:
     
 };
 
+template<class Element, class Compare>
+UniqueArray<Element, Compare>::UniqueArray(unsigned int size) : size(size){
+    arr = new Element[size];
+    isAvailable = new bool[size];
+    for (int i = 0; i < size ; ++i) {
+        isAvailable[i] = false;
+    }
+}
+
 #include "UniqueArrayImp.h"
+
 
 
 #endif //MTMPARKINGLOT_UNIQUEARRAY_H
