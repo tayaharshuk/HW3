@@ -32,7 +32,6 @@ typedef UniqueArray<TestElement, TestCompare> UA;
 
 class TestFilter: public UA::Filter{
 public:
-
     bool operator()(const TestElement &element) const override {
         return element.getId()%2;
     }
