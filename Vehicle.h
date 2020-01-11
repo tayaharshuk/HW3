@@ -6,45 +6,64 @@
 
 using namespace ParkingLotUtils;
 
+namespace MtmParkingLot {
+    class Vehicle {
+    protected:
+        LicensePlate licensePlate;
+        Time entranceTime;
+        unsigned int numOfTickets;
 
-class Vehicle {
-protected:
-    LicensePlate licensePlate;
-    Time entranceTime;
-    unsigned int numOfTickets;
+    public:
+        Vehicle(const LicensePlate &licensePlate, const Time &entranceTime)
+                : licensePlate(licensePlate), entranceTime(entranceTime),
+                  numOfTickets(0) {}
 
-public:
-    unsigned int getNumOfTickets() const {
-        return numOfTickets;
-    }
+        const LicensePlate &getLicensePlate() const {
+            return licensePlate;
+        }
 
-    void incrementNumOfTickets() {
-        numOfTickets++;
-    }
+        unsigned int getNumOfTickets() const {
+            return numOfTickets;
+        }
 
-    void checkForTicket(Time& checkTime){
-        if((checkTime-entranceTime).toHours() >= 24)
-            incrementNumOfTickets();
-    }
+        void incrementNumOfTickets() {
+            numOfTickets++;
+        }
 
-    virtual int getBill(Time& exitTime) = 0;
-};
+        void checkForTicket(Time &checkTime) {
+            if ((checkTime - entranceTime).toHours() >= 24)
+                incrementNumOfTickets();
+        }
 
-class Motorbike: public Vehicle{
+        virtual int getBill(Time &exitTime) = 0;
+    };
 
-public:
-    int getBill(Time& exitTime) override;
-};
+//TODO: Taya CompareVehicle
+    class CompareVehicle {
+    };
 
-class Car: public Vehicle{
+    class Motorbike : public Vehicle {
 
-public:
-    int getBill(Time& exitTime) override;
-};
+    public:
+        Motorbike(const LicensePlate &licensePlate, const Time &entranceTime);
 
-class Handicapped: public Vehicle{
+        int getBill(Time &exitTime) override;
+    };
 
-public:
-    int getBill(Time& exitTime) override;
-};
+    class Car : public Vehicle {
+
+    public:
+        Car(const LicensePlate &licensePlate, const Time &entranceTime);
+
+        int getBill(Time &exitTime) override;
+    };
+
+    class Handicapped : public Car {
+
+    public:
+        Handicapped(const LicensePlate &licensePlate, const Time &entranceTime);
+
+        int getBill(Time &exitTime) override;
+    };
+}
 #endif //HW3_VEHICLE_H

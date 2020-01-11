@@ -4,6 +4,18 @@
 
 #include "Vehicle.h"
 
+using namespace MtmParkingLot;
+
+Motorbike::Motorbike(const LicensePlate &licensePlate, const Time &entranceTime)
+        : Vehicle(licensePlate, entranceTime) {}
+
+Car::Car(const LicensePlate &licensePlate, const Time &entranceTime) : Vehicle(
+        licensePlate, entranceTime) {}
+
+Handicapped::Handicapped(const LicensePlate &licensePlate,
+                         const Time &entranceTime) : Car(licensePlate,
+                                                             entranceTime) {}
+
 int Motorbike::getBill(Time& exitTime) {
     return (exitTime-entranceTime)*15;
 }
