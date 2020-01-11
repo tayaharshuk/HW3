@@ -16,7 +16,7 @@ bool UniqueArray<Element, Compare>::remove(const Element &element) {
     return true;
 }
 
-//TODO
+
 template<class Element, class Compare>
 unsigned int UniqueArray<Element, Compare>::insert(const Element &element) {
     unsigned int index = next;

@@ -1,4 +1,4 @@
-// Created by Jonatan Joseph on 10/01/2020
+// Created by Jonathan Joseph on 10/01/2020
 
 #include <iostream>
 #include <cassert>
@@ -14,6 +14,10 @@ public:
     unsigned int getId() const {
         return id;
     }
+};
+
+class TestElement2: public TestElement{
+
 };
 
 class TestCompare{
