@@ -14,11 +14,11 @@ namespace MtmParkingLot {
         unsigned int numOfTickets;
 
     public:
-        Vehicle(const LicensePlate &licensePlate, const Time &entranceTime)
+        Vehicle(const LicensePlate& licensePlate, const Time& entranceTime) //constructor
                 : licensePlate(licensePlate), entranceTime(entranceTime),
                   numOfTickets(0) {}
 
-        const LicensePlate &getLicensePlate() const {
+        const LicensePlate& getLicensePlate() const {
             return licensePlate;
         }
 
@@ -26,21 +26,26 @@ namespace MtmParkingLot {
             return numOfTickets;
         }
 
-        void incrementNumOfTickets() {
-            numOfTickets++;
+        void setTicket() {
+            numOfTickets = 1;
         }
 
-        void checkForTicket(Time &checkTime) {
-            if ((checkTime - entranceTime).toHours() >= 24)
-                incrementNumOfTickets();
+        void checkForTicket(Time& inspectionTime) {
+            if ((inspectionTime - entranceTime).toHours() >= 24)
+                setTicket();
         }
 
-        virtual int getBill(Time &exitTime) = 0;
+        virtual int getBill(Time& exitTime) = 0;
     };
 
-//TODO: Taya CompareVehicle
+
     class CompareVehicle {
+      public:
+       bool operator() (Vehicle& vehicle1, Vehicle& vehicle2){
+           return vehicle1.getLicensePlate() == vehicle2.getLicensePlate();
+       }
     };
+
 
     class Motorbike : public Vehicle {
 

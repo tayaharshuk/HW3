@@ -8,6 +8,7 @@
 #include "Vehicle.h"
 #include <cstring>
 
+
 namespace MtmParkingLot {
 
     using namespace ParkingLotUtils;
