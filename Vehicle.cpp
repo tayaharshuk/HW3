@@ -3,81 +3,49 @@
 //
 
 #include "Vehicle.h"
-#include "cassert"
-
 
 #define MOTOR_PRICE_FIRST 10
+#define MOTOR_PRICE 5
+#define CAR_PRICE_FIRST 20
+#define CAR_PRICE 10
+#define HANDICAPPED_PRICE 15
 #define TICKET 250
+#define MAX_HOURS_TO_PAY 6
 //TODO
 
 using namespace MtmParkingLot;
 
+//C'tors
 Motorbike::Motorbike(const LicensePlate &licensePlate, const Time &entranceTime)
-        : Vehicle(licensePlate, entranceTime) {}
+        : Vehicle(licensePlate, entranceTime,MOTOR_PRICE_FIRST,MOTOR_PRICE) {}
 
-Car::Car(const LicensePlate &licensePlate, const Time &entranceTime) : Vehicle(
-        licensePlate, entranceTime) {}
+Car::Car(const LicensePlate &licensePlate, const Time &entranceTime)
+        : Vehicle(licensePlate, entranceTime,CAR_PRICE_FIRST,CAR_PRICE) {}
 
-Handicapped::Handicapped(const LicensePlate &licensePlate,
-                         const Time &entranceTime) : Car(licensePlate,
-                                                             entranceTime) {}
+Handicapped::Handicapped(const LicensePlate &licensePlate,const Time &entranceTime)
+             : Car(licensePlate, entranceTime) {}
 
-int Motorbike::getBill(Time& exitTime) {
-    Time parkingTime = exitTime-entranceTime;
-    unsigned int timeInHours = parkingTime.toHours();
-    assert(timeInHours>0); //TODO
-    if(timeInHours == 1){
-        return 10;
-    }else if(timeInHours<6){
-        return 10+5*(timeInHours-1);
+/** getBill
+ * return the bill of the vehicle based on times and ticket
+ * Handicapped vehicle will override this function *
+ * @param exitTime
+ * @return
+ */
+unsigned int Vehicle::getBill(Time &exitTime) {
+    unsigned int timeInHours = (exitTime-entranceTime).toHours();
+    if(timeInHours == 0){
+        return 0;
+    }
+    else if(timeInHours == 1){
+        return priceForFirstHour;
+    }else if(timeInHours<MAX_HOURS_TO_PAY){
+        return priceForFirstHour+priceForHour*(timeInHours-1);
     }else{
-        return 10+5*5 + 250*numOfTickets;
+        return priceForFirstHour+priceForHour*(MAX_HOURS_TO_PAY-1) + TICKET*numOfTickets;
     }
-
-    if (timeInHours == 1){
-        return 10;
-    }
-    for(int i = 2 ; i < 6; i++){
-        if (timeInHours == i){
-            return 10 +(i-1)*5;
-        }
-    }
-    if(timeInHours >=6 && timeInHours <=24){
-        return 10+5*5;
-    }
-    if(timeInHours>24){
-        return 250+10+5*5;
-    }
-    return 0; // in case the car wasn't in the parking lot.
-
 }
 
-int Car::getBill(Time& exitTime) {
-    Time parkingTime = exitTime-entranceTime;
-    unsigned int timeInHours = parkingTime.toHours();
-    if (timeInHours == 1){
-        return 20;
-    }
-    for(int i = 2 ; i < 6; i++){
-        if (timeInHours == i){
-            return 20 +(i-1)*5;
-        }
-    }
-    if(timeInHours >=6 && timeInHours <=24){
-        return 20+5*5;
-    }
-    if(timeInHours>24){
-        return 250+20+5*5;
-    }
-    return 0; // in case the car wasn't in the parking lot.
-
-}
-
-int Handicapped::getBill(Time& exitTime) {
-    Time parkingTime = exitTime-entranceTime;
-    unsigned int timeInHours = parkingTime.toHours();
-    if (timeInHours<=24){
-        return 15;
-    }
-    return 265;
+//Override getBill for handicapped
+unsigned int Handicapped::getBill(Time &exitTime) {
+    return HANDICAPPED_PRICE + TICKET*numOfTickets;
 }

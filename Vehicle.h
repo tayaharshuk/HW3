@@ -3,20 +3,29 @@
 
 #include "ParkingLotTypes.h"
 #include "Time.h"
+#include "cassert"
 
 using namespace ParkingLotUtils;
 
 namespace MtmParkingLot {
+
+    /** Vehicle
+     *
+     */
     class Vehicle {
     protected:
         LicensePlate licensePlate;
         Time entranceTime;
         unsigned int numOfTickets;
+        unsigned int priceForFirstHour;
+        unsigned int priceForHour;
 
     public:
-        Vehicle(const LicensePlate& licensePlate, const Time& entranceTime) //constructor
+        Vehicle(const LicensePlate& licensePlate, const Time& entranceTime,
+                unsigned int priceForFirstHour, unsigned int priceForHour) //constructor
                 : licensePlate(licensePlate), entranceTime(entranceTime),
-                  numOfTickets(0) {}
+                  numOfTickets(0), priceForFirstHour(priceForFirstHour),
+                  priceForHour(priceForHour) {}
 
         const LicensePlate& getLicensePlate() const {
             return licensePlate;
@@ -35,8 +44,9 @@ namespace MtmParkingLot {
                 setTicket();
         }
 
-        virtual int getBill(Time& exitTime) = 0;
+        virtual unsigned int getBill(Time& exitTime);;
     };
+
 
 
     class CompareVehicle {
@@ -46,29 +56,20 @@ namespace MtmParkingLot {
        }
     };
 
-
     class Motorbike : public Vehicle {
-
     public:
         Motorbike(const LicensePlate &licensePlate, const Time &entranceTime);
-
-        int getBill(Time &exitTime) override;
     };
 
     class Car : public Vehicle {
-
     public:
         Car(const LicensePlate &licensePlate, const Time &entranceTime);
-
-        int getBill(Time &exitTime) override;
     };
 
     class Handicapped : public Car {
-
     public:
         Handicapped(const LicensePlate &licensePlate, const Time &entranceTime);
-
-        int getBill(Time &exitTime) override;
+        unsigned int getBill(Time &exitTime) override;
     };
 }
 #endif //HW3_VEHICLE_H
