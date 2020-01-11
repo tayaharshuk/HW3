@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Matam/HW3/main.cpp" "C:/Matam/HW3/cmake-build-debug/CMakeFiles/HW3.dir/main.cpp.obj"
+  "C:/Matam/HW3/main2.cpp" "C:/Matam/HW3/cmake-build-debug/CMakeFiles/HW3.dir/main2.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

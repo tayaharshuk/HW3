@@ -83,7 +83,13 @@
 		<Unit filename="C:/Matam/HW3/UniqueArray.h">
 			<Option target="HW3"/>
 		</Unit>
-		<Unit filename="C:/Matam/HW3/main.cpp">
+		<Unit filename="C:/Matam/HW3/UniqueArrayExceptions.h">
+			<Option target="HW3"/>
+		</Unit>
+		<Unit filename="C:/Matam/HW3/UniqueArrayImp.h">
+			<Option target="HW3"/>
+		</Unit>
+		<Unit filename="C:/Matam/HW3/main2.cpp">
 			<Option target="HW3"/>
 		</Unit>
 		<Unit filename="C:/Matam/HW3/CMakeLists.txt">

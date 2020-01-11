@@ -56,27 +56,27 @@ include CMakeFiles/HW3.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/HW3.dir/flags.make
 
-CMakeFiles/HW3.dir/main.cpp.obj: CMakeFiles/HW3.dir/flags.make
-CMakeFiles/HW3.dir/main.cpp.obj: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Matam\HW3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/HW3.dir/main.cpp.obj"
-	C:\Users\ASUS\Desktop\mingw32\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\HW3.dir\main.cpp.obj -c C:\Matam\HW3\main.cpp
+CMakeFiles/HW3.dir/main2.cpp.obj: CMakeFiles/HW3.dir/flags.make
+CMakeFiles/HW3.dir/main2.cpp.obj: ../main2.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Matam\HW3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/HW3.dir/main2.cpp.obj"
+	C:\Users\ASUS\Desktop\mingw32\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\HW3.dir\main2.cpp.obj -c C:\Matam\HW3\main2.cpp
 
-CMakeFiles/HW3.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/HW3.dir/main.cpp.i"
-	C:\Users\ASUS\Desktop\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Matam\HW3\main.cpp > CMakeFiles\HW3.dir\main.cpp.i
+CMakeFiles/HW3.dir/main2.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/HW3.dir/main2.cpp.i"
+	C:\Users\ASUS\Desktop\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Matam\HW3\main2.cpp > CMakeFiles\HW3.dir\main2.cpp.i
 
-CMakeFiles/HW3.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/HW3.dir/main.cpp.s"
-	C:\Users\ASUS\Desktop\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Matam\HW3\main.cpp -o CMakeFiles\HW3.dir\main.cpp.s
+CMakeFiles/HW3.dir/main2.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/HW3.dir/main2.cpp.s"
+	C:\Users\ASUS\Desktop\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Matam\HW3\main2.cpp -o CMakeFiles\HW3.dir\main2.cpp.s
 
 # Object files for target HW3
 HW3_OBJECTS = \
-"CMakeFiles/HW3.dir/main.cpp.obj"
+"CMakeFiles/HW3.dir/main2.cpp.obj"
 
 # External object files for target HW3
 HW3_EXTERNAL_OBJECTS =
 
-HW3.exe: CMakeFiles/HW3.dir/main.cpp.obj
+HW3.exe: CMakeFiles/HW3.dir/main2.cpp.obj
 HW3.exe: CMakeFiles/HW3.dir/build.make
 HW3.exe: CMakeFiles/HW3.dir/linklibs.rsp
 HW3.exe: CMakeFiles/HW3.dir/objects1.rsp
