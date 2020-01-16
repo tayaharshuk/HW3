@@ -80,7 +80,7 @@ template<class Element, class Compare>
 bool UniqueArray<Element, Compare>::getIndex(const Element &element,
                                              unsigned int &index) const {
     for(int i = 0 ; i < size ; i++){
-        if(arr[i]!=NULL && compare(*arr[i],element)){
+        if(arr[i]!= NULL && compare(*(arr[i]),element)){
             index = i;
             return true;
         }
@@ -91,9 +91,7 @@ bool UniqueArray<Element, Compare>::getIndex(const Element &element,
 template<class Element, class Compare>
 const Element *UniqueArray<Element, Compare>::operator[](const Element &element) const {
     unsigned int index;
-    if(!getIndex(element, index)){
-        return NULL;
-    }
+    getIndex(element, index);
     return arr[index];
 }
 

@@ -31,7 +31,7 @@ ParkingResult ParkingLot::enterParking(VehicleType vehicleType,
         case CAR:
             return enterCar(licensePlate,entranceTime);
 
-        case HANDICAPPED:
+        default:
             return enterHandicapped(licensePlate,entranceTime);
     }
 }
@@ -46,6 +46,11 @@ ParkingResult ParkingLot::exitParking(LicensePlate licensePlate, Time exitTime){
 
     const Vehicle* vehicle = getVehicle(parkingSpot ,licensePlate);
 
+    ParkingLotPrinter::printVehicle(std::cout,parkingSpot.getParkingBlock(),
+                                    licensePlate,vehicle->getEntranceTime());
+    ParkingLotPrinter::printExitSuccess(std::cout,parkingSpot,exitTime,
+                                        vehicle->getBill(exitTime));
+
     switch (parkingSpot.getParkingBlock()){
         case MOTORBIKE:
             motorParkingBlock.remove(*vehicle);
@@ -57,10 +62,7 @@ ParkingResult ParkingLot::exitParking(LicensePlate licensePlate, Time exitTime){
             handicappedParkingBlock.remove(*vehicle);
             break;
     }
-    ParkingLotPrinter::printVehicle(std::cout,parkingSpot.getParkingBlock(),
-            licensePlate,vehicle->getEntranceTime());
-    ParkingLotPrinter::printExitSuccess(std::cout,parkingSpot,exitTime,
-            vehicle->getBill(exitTime));
+
     return SUCCESS;
 }
 
@@ -119,7 +121,7 @@ ParkingResult MtmParkingLot::ParkingLot::enterMotor(LicensePlate &licensePlate,
     try {
         place = motorParkingBlock.insert(Motorbike(licensePlate, time));
     }
-    catch (UniqueArray<Motorbike,CompareVehicle>
+    catch (UniqueArray<Vehicle,CompareVehicle>
             ::UniqueArrayIsFullException& e){
         ParkingLotPrinter::printVehicle(std::cout, MOTORBIKE,
                 licensePlate, time);
@@ -139,7 +141,7 @@ ParkingResult ParkingLot::enterCar( LicensePlate &licensePlate, Time &time) {
     try {
         place = carParkingBlock.insert(Car(licensePlate,time));
     }
-    catch(UniqueArray<Car,CompareVehicle>::UniqueArrayIsFullException& e){
+    catch(UniqueArray<Vehicle,CompareVehicle>::UniqueArrayIsFullException& e){
         ParkingLotPrinter::printVehicle(std::cout,CAR,licensePlate,time);
         ParkingLotPrinter::printEntryFailureNoSpot(std::cout);
         return NO_EMPTY_SPOT;
@@ -158,12 +160,12 @@ ParkingResult ParkingLot::enterHandicapped( LicensePlate &licensePlate,
         place = handicappedParkingBlock.insert(Handicapped(licensePlate,time));
         parkingBlock = HANDICAPPED;
     }
-    catch(UniqueArray<Handicapped,CompareVehicle>::UniqueArrayIsFullException& e){
+    catch(UniqueArray<Vehicle,CompareVehicle>::UniqueArrayIsFullException& e){
         try {
             place = carParkingBlock.insert(Handicapped(licensePlate,time));
             parkingBlock = CAR;
         }
-        catch (UniqueArray<Handicapped,CompareVehicle>::UniqueArrayIsFullException& e){//todo: Handicapped or car
+        catch (UniqueArray<Vehicle,CompareVehicle>::UniqueArrayIsFullException& e){//todo: Handicapped or car
             ParkingLotPrinter::printVehicle(std::cout,HANDICAPPED,licensePlate,time);
             ParkingLotPrinter::printEntryFailureNoSpot(std::cout);
             return NO_EMPTY_SPOT;

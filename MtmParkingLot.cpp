@@ -134,6 +134,7 @@ static void getParkingSizes(istream& inputStream, unsigned int parkingSizes[]) {
     }
 }
 
+/*
 int main(int argc, char* argv[]) {
     if (argc != 1 && argc != 2) {
         cout << "Usage: " << argv[0] << " [inputFile]" << endl;
@@ -147,4 +148,4 @@ int main(int argc, char* argv[]) {
     processInput(inputStream, parkingLot, currentTime);
     closeInputStream(inputStream);
     return 0;
-}
+}*/
