@@ -27,7 +27,7 @@ namespace MtmParkingLot {
         ParkingResult enterParking(VehicleType vehicleType,
                 LicensePlate &licensePlate, Time entranceTime);
 
-        //todo
+
         ParkingResult exitParking(LicensePlate licensePlate, Time exitTime);
 
         ParkingResult getParkingSpot(LicensePlate licensePlate,
@@ -35,7 +35,11 @@ namespace MtmParkingLot {
 
         void inspectParkingLot(Time inspectionTime);
 
-        friend ostream &operator<<(ostream &os, const ParkingLot &parkingLot);
+        friend ostream &operator<<(ostream &os, const ParkingLot &parkingLot){
+            ParkingLotPrinter::printParkingLotTitle(std::cout);
+
+            ParkingLotPrinter::printVehicle()
+            }
 
 
     private:

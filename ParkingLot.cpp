@@ -77,15 +77,31 @@ void ParkingLot::inspectParkingLot(Time inspectionTime) {
     ticketFilter filter;
     int counter = 0;
 
-    for (UniqueArray<Vehicle, CompareVehicle>::Iterator i = motorParkingBlock.begin();
-        i!= motorParkingBlock.end(); ++i){
-        if(filter(*i)){
-            (*i).setTicket();
-            counter++;
-        }
-    }
-    //TODO: Taya - Car+Handicapped, print
-}
+     for (UniqueArray<Vehicle, CompareVehicle>::Iterator i = motorParkingBlock.begin();
+        i!= motorParkingBlock.end(); ++i) {
+         if (filter(*i)) {
+             (*i).setTicket();
+             counter++;
+         }
+     }
+     for(UniqueArray<Vehicle,CompareVehicle>::Iterator j = carParkingBlock.begin();
+        j!= carParkingBlock.end();++j) {
+         if (filter(*j)) {
+             (*j).setTicket();
+             counter++;
+         }
+     }
+      for (UniqueArray <Vehicle,CompareVehicle>::Iterator k = handicappedParkingBlock.begin();
+           k!= handicappedParkingBlock.end(); ++k) {
+          if (filter(*k)) {
+              (*k).setTicket();
+              counter++;
+          }
+      }
+      ParkingLotPrinter::printInspectionResult(std::cout,inspectionTime,counter);
+     }
+
+
 
 bool ticketFilter::operator()(const Vehicle &element) const {
     unsigned int numOfTickets = element.getNumOfTickets();
