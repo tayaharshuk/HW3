@@ -17,6 +17,48 @@
 					<DistClean command="C:/Users/ASUS/Desktop/mingw32/bin/mingw32-make.exe -f &quot;C:/Matam/HW3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="HW3_UA">
+				<Option output="C:/Matam/HW3/cmake-build-debug/HW3_UA.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Matam/HW3/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Users/ASUS/Desktop/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="C:/Users/ASUS/Desktop/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32"/>
+					<Add directory="C:/Users/ASUS/Desktop/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="C:/Users/ASUS/Desktop/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include"/>
+					<Add directory="C:/Users/ASUS/Desktop/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="C:/Users/ASUS/Desktop/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Users/ASUS/Desktop/mingw32/bin/mingw32-make.exe -f &quot;C:/Matam/HW3/cmake-build-debug/Makefile&quot;  VERBOSE=1 HW3_UA"/>
+					<CompileFile command="C:/Users/ASUS/Desktop/mingw32/bin/mingw32-make.exe -f &quot;C:/Matam/HW3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/ASUS/Desktop/mingw32/bin/mingw32-make.exe -f &quot;C:/Matam/HW3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/ASUS/Desktop/mingw32/bin/mingw32-make.exe -f &quot;C:/Matam/HW3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="HW3_UA/fast">
+				<Option output="C:/Matam/HW3/cmake-build-debug/HW3_UA.exe" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="C:/Matam/HW3/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="C:/Users/ASUS/Desktop/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++"/>
+					<Add directory="C:/Users/ASUS/Desktop/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32"/>
+					<Add directory="C:/Users/ASUS/Desktop/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward"/>
+					<Add directory="C:/Users/ASUS/Desktop/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include"/>
+					<Add directory="C:/Users/ASUS/Desktop/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/include-fixed"/>
+					<Add directory="C:/Users/ASUS/Desktop/mingw32/bin/../lib/gcc/i686-w64-mingw32/8.1.0/../../../../i686-w64-mingw32/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="C:/Users/ASUS/Desktop/mingw32/bin/mingw32-make.exe -f &quot;C:/Matam/HW3/cmake-build-debug/Makefile&quot;  VERBOSE=1 HW3_UA/fast"/>
+					<CompileFile command="C:/Users/ASUS/Desktop/mingw32/bin/mingw32-make.exe -f &quot;C:/Matam/HW3/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="C:/Users/ASUS/Desktop/mingw32/bin/mingw32-make.exe -f &quot;C:/Matam/HW3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="C:/Users/ASUS/Desktop/mingw32/bin/mingw32-make.exe -f &quot;C:/Matam/HW3/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="HW3">
 				<Option output="C:/Matam/HW3/cmake-build-debug/HW3.exe" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="C:/Matam/HW3/cmake-build-debug"/>
@@ -80,16 +122,58 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Matam/HW3/MtmParkingLot.cpp">
+			<Option target="HW3"/>
+		</Unit>
+		<Unit filename="C:/Matam/HW3/ParkingLot.cpp">
+			<Option target="HW3"/>
+		</Unit>
+		<Unit filename="C:/Matam/HW3/ParkingLot.h">
+			<Option target="HW3"/>
+		</Unit>
+		<Unit filename="C:/Matam/HW3/ParkingLotPrinter.cpp">
+			<Option target="HW3"/>
+		</Unit>
+		<Unit filename="C:/Matam/HW3/ParkingLotPrinter.h">
+			<Option target="HW3"/>
+		</Unit>
+		<Unit filename="C:/Matam/HW3/ParkingLotTypes.h">
+			<Option target="HW3"/>
+		</Unit>
+		<Unit filename="C:/Matam/HW3/ParkingSpot.cpp">
+			<Option target="HW3"/>
+		</Unit>
+		<Unit filename="C:/Matam/HW3/ParkingSpot.h">
+			<Option target="HW3"/>
+		</Unit>
+		<Unit filename="C:/Matam/HW3/Time.cpp">
+			<Option target="HW3"/>
+		</Unit>
+		<Unit filename="C:/Matam/HW3/Time.h">
+			<Option target="HW3"/>
+		</Unit>
 		<Unit filename="C:/Matam/HW3/UniqueArray.h">
+			<Option target="HW3_UA"/>
 			<Option target="HW3"/>
 		</Unit>
 		<Unit filename="C:/Matam/HW3/UniqueArrayExceptions.h">
+			<Option target="HW3_UA"/>
 			<Option target="HW3"/>
 		</Unit>
 		<Unit filename="C:/Matam/HW3/UniqueArrayImp.h">
+			<Option target="HW3_UA"/>
+			<Option target="HW3"/>
+		</Unit>
+		<Unit filename="C:/Matam/HW3/Vehicle.cpp">
+			<Option target="HW3"/>
+		</Unit>
+		<Unit filename="C:/Matam/HW3/Vehicle.h">
 			<Option target="HW3"/>
 		</Unit>
 		<Unit filename="C:/Matam/HW3/main2.cpp">
+			<Option target="HW3_UA"/>
+		</Unit>
+		<Unit filename="C:/Matam/HW3/main3.cpp">
 			<Option target="HW3"/>
 		</Unit>
 		<Unit filename="C:/Matam/HW3/CMakeLists.txt">

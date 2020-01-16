@@ -110,6 +110,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named HW3_UA
+
+# Build rule for target.
+HW3_UA: cmake_check_build_system
+	$(MAKE) -f CMakeFiles\Makefile2 HW3_UA
+.PHONY : HW3_UA
+
+# fast build rule for target.
+HW3_UA/fast:
+	$(MAKE) -f CMakeFiles\HW3_UA.dir\build.make CMakeFiles/HW3_UA.dir/build
+.PHONY : HW3_UA/fast
+
+#=============================================================================
 # Target rules for targets named HW3
 
 # Build rule for target.
@@ -122,13 +135,175 @@ HW3/fast:
 	$(MAKE) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/build
 .PHONY : HW3/fast
 
+MtmParkingLot.obj: MtmParkingLot.cpp.obj
+
+.PHONY : MtmParkingLot.obj
+
+# target to build an object file
+MtmParkingLot.cpp.obj:
+	$(MAKE) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/MtmParkingLot.cpp.obj
+.PHONY : MtmParkingLot.cpp.obj
+
+MtmParkingLot.i: MtmParkingLot.cpp.i
+
+.PHONY : MtmParkingLot.i
+
+# target to preprocess a source file
+MtmParkingLot.cpp.i:
+	$(MAKE) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/MtmParkingLot.cpp.i
+.PHONY : MtmParkingLot.cpp.i
+
+MtmParkingLot.s: MtmParkingLot.cpp.s
+
+.PHONY : MtmParkingLot.s
+
+# target to generate assembly for a file
+MtmParkingLot.cpp.s:
+	$(MAKE) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/MtmParkingLot.cpp.s
+.PHONY : MtmParkingLot.cpp.s
+
+ParkingLot.obj: ParkingLot.cpp.obj
+
+.PHONY : ParkingLot.obj
+
+# target to build an object file
+ParkingLot.cpp.obj:
+	$(MAKE) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/ParkingLot.cpp.obj
+.PHONY : ParkingLot.cpp.obj
+
+ParkingLot.i: ParkingLot.cpp.i
+
+.PHONY : ParkingLot.i
+
+# target to preprocess a source file
+ParkingLot.cpp.i:
+	$(MAKE) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/ParkingLot.cpp.i
+.PHONY : ParkingLot.cpp.i
+
+ParkingLot.s: ParkingLot.cpp.s
+
+.PHONY : ParkingLot.s
+
+# target to generate assembly for a file
+ParkingLot.cpp.s:
+	$(MAKE) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/ParkingLot.cpp.s
+.PHONY : ParkingLot.cpp.s
+
+ParkingLotPrinter.obj: ParkingLotPrinter.cpp.obj
+
+.PHONY : ParkingLotPrinter.obj
+
+# target to build an object file
+ParkingLotPrinter.cpp.obj:
+	$(MAKE) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/ParkingLotPrinter.cpp.obj
+.PHONY : ParkingLotPrinter.cpp.obj
+
+ParkingLotPrinter.i: ParkingLotPrinter.cpp.i
+
+.PHONY : ParkingLotPrinter.i
+
+# target to preprocess a source file
+ParkingLotPrinter.cpp.i:
+	$(MAKE) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/ParkingLotPrinter.cpp.i
+.PHONY : ParkingLotPrinter.cpp.i
+
+ParkingLotPrinter.s: ParkingLotPrinter.cpp.s
+
+.PHONY : ParkingLotPrinter.s
+
+# target to generate assembly for a file
+ParkingLotPrinter.cpp.s:
+	$(MAKE) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/ParkingLotPrinter.cpp.s
+.PHONY : ParkingLotPrinter.cpp.s
+
+ParkingSpot.obj: ParkingSpot.cpp.obj
+
+.PHONY : ParkingSpot.obj
+
+# target to build an object file
+ParkingSpot.cpp.obj:
+	$(MAKE) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/ParkingSpot.cpp.obj
+.PHONY : ParkingSpot.cpp.obj
+
+ParkingSpot.i: ParkingSpot.cpp.i
+
+.PHONY : ParkingSpot.i
+
+# target to preprocess a source file
+ParkingSpot.cpp.i:
+	$(MAKE) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/ParkingSpot.cpp.i
+.PHONY : ParkingSpot.cpp.i
+
+ParkingSpot.s: ParkingSpot.cpp.s
+
+.PHONY : ParkingSpot.s
+
+# target to generate assembly for a file
+ParkingSpot.cpp.s:
+	$(MAKE) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/ParkingSpot.cpp.s
+.PHONY : ParkingSpot.cpp.s
+
+Time.obj: Time.cpp.obj
+
+.PHONY : Time.obj
+
+# target to build an object file
+Time.cpp.obj:
+	$(MAKE) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/Time.cpp.obj
+.PHONY : Time.cpp.obj
+
+Time.i: Time.cpp.i
+
+.PHONY : Time.i
+
+# target to preprocess a source file
+Time.cpp.i:
+	$(MAKE) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/Time.cpp.i
+.PHONY : Time.cpp.i
+
+Time.s: Time.cpp.s
+
+.PHONY : Time.s
+
+# target to generate assembly for a file
+Time.cpp.s:
+	$(MAKE) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/Time.cpp.s
+.PHONY : Time.cpp.s
+
+Vehicle.obj: Vehicle.cpp.obj
+
+.PHONY : Vehicle.obj
+
+# target to build an object file
+Vehicle.cpp.obj:
+	$(MAKE) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/Vehicle.cpp.obj
+.PHONY : Vehicle.cpp.obj
+
+Vehicle.i: Vehicle.cpp.i
+
+.PHONY : Vehicle.i
+
+# target to preprocess a source file
+Vehicle.cpp.i:
+	$(MAKE) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/Vehicle.cpp.i
+.PHONY : Vehicle.cpp.i
+
+Vehicle.s: Vehicle.cpp.s
+
+.PHONY : Vehicle.s
+
+# target to generate assembly for a file
+Vehicle.cpp.s:
+	$(MAKE) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/Vehicle.cpp.s
+.PHONY : Vehicle.cpp.s
+
 main2.obj: main2.cpp.obj
 
 .PHONY : main2.obj
 
 # target to build an object file
 main2.cpp.obj:
-	$(MAKE) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/main2.cpp.obj
+	$(MAKE) -f CMakeFiles\HW3_UA.dir\build.make CMakeFiles/HW3_UA.dir/main2.cpp.obj
 .PHONY : main2.cpp.obj
 
 main2.i: main2.cpp.i
@@ -137,7 +312,7 @@ main2.i: main2.cpp.i
 
 # target to preprocess a source file
 main2.cpp.i:
-	$(MAKE) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/main2.cpp.i
+	$(MAKE) -f CMakeFiles\HW3_UA.dir\build.make CMakeFiles/HW3_UA.dir/main2.cpp.i
 .PHONY : main2.cpp.i
 
 main2.s: main2.cpp.s
@@ -146,8 +321,35 @@ main2.s: main2.cpp.s
 
 # target to generate assembly for a file
 main2.cpp.s:
-	$(MAKE) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/main2.cpp.s
+	$(MAKE) -f CMakeFiles\HW3_UA.dir\build.make CMakeFiles/HW3_UA.dir/main2.cpp.s
 .PHONY : main2.cpp.s
+
+main3.obj: main3.cpp.obj
+
+.PHONY : main3.obj
+
+# target to build an object file
+main3.cpp.obj:
+	$(MAKE) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/main3.cpp.obj
+.PHONY : main3.cpp.obj
+
+main3.i: main3.cpp.i
+
+.PHONY : main3.i
+
+# target to preprocess a source file
+main3.cpp.i:
+	$(MAKE) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/main3.cpp.i
+.PHONY : main3.cpp.i
+
+main3.s: main3.cpp.s
+
+.PHONY : main3.s
+
+# target to generate assembly for a file
+main3.cpp.s:
+	$(MAKE) -f CMakeFiles\HW3.dir\build.make CMakeFiles/HW3.dir/main3.cpp.s
+.PHONY : main3.cpp.s
 
 # Help Target
 help:
@@ -155,12 +357,34 @@ help:
 	@echo ... all (the default if no target is provided)
 	@echo ... clean
 	@echo ... depend
+	@echo ... HW3_UA
 	@echo ... HW3
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... MtmParkingLot.obj
+	@echo ... MtmParkingLot.i
+	@echo ... MtmParkingLot.s
+	@echo ... ParkingLot.obj
+	@echo ... ParkingLot.i
+	@echo ... ParkingLot.s
+	@echo ... ParkingLotPrinter.obj
+	@echo ... ParkingLotPrinter.i
+	@echo ... ParkingLotPrinter.s
+	@echo ... ParkingSpot.obj
+	@echo ... ParkingSpot.i
+	@echo ... ParkingSpot.s
+	@echo ... Time.obj
+	@echo ... Time.i
+	@echo ... Time.s
+	@echo ... Vehicle.obj
+	@echo ... Vehicle.i
+	@echo ... Vehicle.s
 	@echo ... main2.obj
 	@echo ... main2.i
 	@echo ... main2.s
+	@echo ... main3.obj
+	@echo ... main3.i
+	@echo ... main3.s
 .PHONY : help
 
 
