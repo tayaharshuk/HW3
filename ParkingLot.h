@@ -38,8 +38,13 @@ namespace MtmParkingLot {
         friend ostream &operator<<(ostream &os, const ParkingLot &parkingLot){
             ParkingLotPrinter::printParkingLotTitle(std::cout);
 
-            ParkingLotPrinter::printVehicle()
+            //ParkingLotPrinter::printVehicle();
+
+            for (UniqueArray<Vehicle, CompareVehicle>::Iterator i = parkingLot.motorParkingBlock.begin();
+                i != parkingLot.motorParkingBlock.end(); ++i) {
+                //TODO
             }
+        }
 
 
     private:

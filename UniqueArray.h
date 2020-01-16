@@ -55,9 +55,13 @@ public:
 
     class Iterator{
         Element* element;
+        unsigned int size;
+        unsigned int counter;
 
     public:
-        explicit Iterator(Element* elementPtr) : element(elementPtr){}
+        explicit Iterator(Element* elementPtr, unsigned int size) :
+        element(elementPtr), size(size), counter(0){}
+
         ~Iterator() = default;
 
         bool operator==(const Iterator &rhs) const {
@@ -69,12 +73,21 @@ public:
         }
 
         Iterator& operator=(const Iterator &rhs) {
-            this->element = rhs.element;
+            Iterator(rhs.element,rhs.size);
+            this->counter = rhs.counter;
             return *this;
         }
 
         Iterator& operator++(){
-            element++;
+            while(counter<size){
+                element++;
+                counter++;
+                if(element != NULL)
+                    break;
+            }
+            if(counter == size){
+                element = NULL;
+            }
             return *this;
         }
 
@@ -83,12 +96,14 @@ public:
         }
     };
 
-    Iterator begin(){
-        return Iterator(*arr);
+    Iterator begin() const{
+        Iterator i((*arr)-1,size+1);
+        ++i;
+        return i;
     }
 
-    Iterator end(){
-        return Iterator(*arr+size);
+    Iterator end() const{
+        return Iterator(NULL,0);
     }
 };
 
