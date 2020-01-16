@@ -24,6 +24,10 @@ Car::Car(const LicensePlate &licensePlate, const Time &entranceTime)
 Handicapped::Handicapped(const LicensePlate &licensePlate,const Time &entranceTime)
              : Car(licensePlate, entranceTime) {}
 
+unsigned int Handicapped::getBill(Time &exitTime) const {
+    return HANDICAPPED_PRICE + TICKET*numOfTickets;
+}
+
 /** getBill
  * return the bill of the vehicle based on times and ticket
  * Handicapped vehicle will override this function *
@@ -72,7 +76,3 @@ Vehicle::Vehicle(const LicensePlate &licensePlate, const Time &entranceTime,
           priceForHour(priceForHour) {}
 
 
-//Override getBill for handicapped
-unsigned int Handicapped::getBill(Time &exitTime) {
-    return HANDICAPPED_PRICE + TICKET*numOfTickets;
-}

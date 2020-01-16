@@ -25,6 +25,16 @@ namespace MtmParkingLot {
         Vehicle(const LicensePlate& licensePlate, const Time& entranceTime,
                 unsigned int priceForFirstHour, unsigned int priceForHour);
 
+        virtual Vehicle *Clone() const{
+            //Vehicle();
+        }
+
+        Vehicle(const Vehicle& v){
+            v.Clone();//TODO
+        }
+
+        virtual ~Vehicle() = default;
+
         const LicensePlate& getLicensePlate() const;
 
         const Time& getEntranceTime() const;
@@ -60,7 +70,7 @@ namespace MtmParkingLot {
     class Handicapped : public Car {
     public:
         Handicapped(const LicensePlate &licensePlate, const Time &entranceTime);
-        unsigned int getBill(Time &exitTime);
+        unsigned int getBill(Time &exitTime) const override;
     };
 }
 #endif //HW3_VEHICLE_H
