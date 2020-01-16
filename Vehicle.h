@@ -13,6 +13,7 @@ namespace MtmParkingLot {
      *
      */
     class Vehicle {
+        //TODO: the reason it is marked is because we need to convert it into a string?
     protected:
         LicensePlate licensePlate;
         Time entranceTime;
@@ -27,24 +28,21 @@ namespace MtmParkingLot {
                   numOfTickets(0), priceForFirstHour(priceForFirstHour),
                   priceForHour(priceForHour) {}
 
-        const LicensePlate& getLicensePlate() const {
-            return licensePlate;
-        }
 
-        unsigned int getNumOfTickets() const {
-            return numOfTickets;
-        }
 
-        void setTicket() {
-            numOfTickets = 1;
-        }
 
-        void checkForTicket(Time& inspectionTime) {
-            if ((inspectionTime - entranceTime).toHours() >= 24)
-                setTicket();
-        }
 
-        virtual unsigned int getBill(Time& exitTime);;
+        const LicensePlate& getLicensePlate() const;
+
+        const Time& getEntranceTime();
+
+        unsigned int getNumOfTickets() const;
+
+        void setTicket();
+
+        void checkForTicket(Time& inspectionTime);
+
+        virtual unsigned int getBill(Time& exitTime);
     };
 
 

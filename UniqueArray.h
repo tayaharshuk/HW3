@@ -15,7 +15,7 @@ class UniqueArray {
 
 public:
 
-    UniqueArray(unsigned int size);
+    explicit UniqueArray(unsigned int size);
     UniqueArray(const UniqueArray& other);
 
     ~UniqueArray();

@@ -20,8 +20,8 @@ namespace MtmParkingLot {
         UniqueArray<Car, CompareVehicle> carParkingBlock;
         UniqueArray<Handicapped, CompareVehicle> handicappedParkingBlock;
 
-        class LicensePlateFilter
-                : public UniqueArray<Vehicle, CompareVehicle>::Filter {
+
+        /*class LicensePlateFilter: public UniqueArray<Vehicle, CompareVehicle>::Filter {
             LicensePlate licensePlate;
         public:
             const LicensePlate &getLicensePlate() const {
@@ -32,14 +32,24 @@ namespace MtmParkingLot {
                 licensePlate = _licensePlate;
             }
 
-
             bool operator()(const Vehicle &element) const override {
                 return licensePlate == element.getLicensePlate();
             }
         };
 
         LicensePlateFilter filter;
+        */
+        class ticketFilter: public UniqueArray<Vehicle,CompareVehicle>::Filter{
 
+            Time inspectionTime;
+            bool operator()(const Vehicle &element) const override {
+                unsigned int numOfTickets = element.getNumOfTickets();
+                Time entranceTime = element.getEntranceTime(); //todo:const
+                unsigned int totalHours = (inspectionTime-entranceTime).toHours();
+                return ((numOfTickets==0) && (totalHours>24));
+            }
+        };
+        ticketFilter filter;
     public:
 
         explicit ParkingLot(unsigned int parkingBlockSizes[]) :
@@ -50,48 +60,51 @@ namespace MtmParkingLot {
         ~ParkingLot() = default;
 
 
-        ParkingResult
-        enterParking(VehicleType vehicleType, LicensePlate licensePlate,
+        ParkingResult enterParking(VehicleType vehicleType, LicensePlate& licensePlate,
                      Time entranceTime) {
 
-            unsigned int index;
-            ParkingSpot newSpot;
-            switch (vehicleType):
+            switch (vehicleType){
+                case MOTORBIKE:
+                    return enterMotor(licensePlate,entranceTime);
 
-            case MOTORBIKE:
+                case CAR:
+                    return enterCar(licensePlate,entranceTime);
 
-                break;
-            case CAR:
-
-                carParkingBlock.insert(Car(licensePlate, entranceTime));
-            break;
-            case HANDICAPPED:
-                handicappedParkingBlock.insert(
-                        Handicapped(licensePlate, entranceTime));
-            carParkingBlock.insert(Handicapped(licensePlate, entranceTime));
-            break;
-        }//TODO: read about errors - Parking is full, car already exists
-        //TODO: What if License Plate already exists as other vehicle.
+                case HANDICAPPED:
+                    return  enterHandicapped(licensePlate,entranceTime);
+            }
+        }
 
 
+        //todo
         ParkingResult exitParking(LicensePlate licensePlate, Time exitTime);
 
         ParkingResult getParkingSpot(LicensePlate licensePlate,
                                      ParkingSpot &parkingSpot) const;
 
-        void inspectParkingLot(Time inspectionTime);
+
+
+        void inspectParkingLot(Time inspectionTime){};
+
 
         friend ostream &operator<<(ostream &os, const ParkingLot &parkingLot);
 
 
     private:
-        ParkingResult enterMotor(const LicensePlate& licensePlate, Time& time);
+
+        ParkingResult enterMotor( LicensePlate& licensePlate, Time& time);
+        ParkingResult enterCar( LicensePlate& licensePlate, Time& time);
+        ParkingResult enterHandicapped( LicensePlate& licensePlate,Time& time);
+        bool vehicleAlreadyExists(LicensePlate& licensePlate, Time& time, VehicleType& parkingBlockType,
+                                  unsigned int& place) const; //todo:const
+
+
 
     };
     //end of parkingLot class
 
 
-}
+
 
 
 

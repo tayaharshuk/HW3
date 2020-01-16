@@ -45,6 +45,28 @@ unsigned int Vehicle::getBill(Time &exitTime) {
     }
 }
 
+const LicensePlate &Vehicle::getLicensePlate() const {
+    return licensePlate;
+}
+
+unsigned int Vehicle::getNumOfTickets() const {
+    return numOfTickets;
+}
+
+void Vehicle::setTicket() {
+    numOfTickets = 1;
+}
+
+void Vehicle::checkForTicket(Time &inspectionTime) {
+    if ((inspectionTime - entranceTime).toHours() >= 24) //todo: >= or > ?
+        setTicket();
+}
+
+const Time &Vehicle::getEntranceTime() {
+    return entranceTime;
+}
+
+
 //Override getBill for handicapped
 unsigned int Handicapped::getBill(Time &exitTime) {
     return HANDICAPPED_PRICE + TICKET*numOfTickets;
