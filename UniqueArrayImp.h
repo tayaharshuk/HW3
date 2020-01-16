@@ -21,7 +21,7 @@ template<class Element, class Compare>
 unsigned int UniqueArray<Element, Compare>::insert(const Element &element) {
     unsigned int index = next;
     for ( int i = 0 ; i < size ; i++){
-        if (arr[i] != NULL && compare(*arr[i],element)){ //is not empty
+        if (arr[i] != NULL && compare(*(arr[i]),element)){ //is not empty
             return i;
         }
     }

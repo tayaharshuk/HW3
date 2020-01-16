@@ -83,12 +83,12 @@ public:
         }
     };
 
-    Iterator& begin(){
-        return Iterator(arr);
+    Iterator begin(){
+        return Iterator(*arr);
     }
 
-    Iterator& end(){
-        return Iterator(arr+size);
+    Iterator end(){
+        return Iterator(*arr+size);
     }
 };
 

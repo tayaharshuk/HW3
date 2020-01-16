@@ -42,7 +42,7 @@ namespace MtmParkingLot {
 
     class CompareVehicle {
       public:
-       bool operator() (Vehicle& vehicle1, Vehicle& vehicle2){
+       bool operator() (const MtmParkingLot::Vehicle& vehicle1, const MtmParkingLot::Vehicle& vehicle2){
            return vehicle1.getLicensePlate() == vehicle2.getLicensePlate();
        }
     };
