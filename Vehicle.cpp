@@ -11,7 +11,6 @@
 #define HANDICAPPED_PRICE 15
 #define TICKET 250
 #define MAX_HOURS_TO_PAY 6
-//TODO
 
 using namespace MtmParkingLot;
 
@@ -31,7 +30,7 @@ Handicapped::Handicapped(const LicensePlate &licensePlate,const Time &entranceTi
  * @param exitTime
  * @return
  */
-unsigned int Vehicle::getBill(Time &exitTime) {
+unsigned int Vehicle::getBill(Time &exitTime) const {
     unsigned int timeInHours = (exitTime-entranceTime).toHours();
     if(timeInHours == 0){
         return 0;
@@ -62,9 +61,15 @@ void Vehicle::checkForTicket(Time &inspectionTime) {
         setTicket();
 }
 
-const Time &Vehicle::getEntranceTime() {
+const Time &Vehicle::getEntranceTime() const {
     return entranceTime;
 }
+
+Vehicle::Vehicle(const LicensePlate &licensePlate, const Time &entranceTime,
+                 unsigned int priceForFirstHour, unsigned int priceForHour) //constructor
+        : licensePlate(licensePlate), entranceTime(entranceTime),
+          numOfTickets(0), priceForFirstHour(priceForFirstHour),
+          priceForHour(priceForHour) {}
 
 
 //Override getBill for handicapped

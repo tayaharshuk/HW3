@@ -52,7 +52,44 @@ public:
             return "Array is full";
         }
     };
-    
+
+    class Iterator{
+        Element* element;
+
+    public:
+        explicit Iterator(Element* elementPtr) : element(elementPtr){}
+        ~Iterator() = default;
+
+        bool operator==(const Iterator &rhs) const {
+            return element == rhs.element;
+        }
+
+        bool operator!=(const Iterator &rhs) const {
+            return !(rhs == *this);
+        }
+
+        Iterator& operator=(const Iterator &rhs) {
+            this->element = rhs.element;
+            return *this;
+        }
+
+        Iterator& operator++(){
+            element++;
+            return *this;
+        }
+
+        Element& operator*(){
+            return *element;
+        }
+    };
+
+    Iterator& begin(){
+        return Iterator(arr);
+    }
+
+    Iterator& end(){
+        return Iterator(arr+size);
+    }
 };
 
 #include "UniqueArrayImp.h"

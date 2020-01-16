@@ -23,18 +23,11 @@ namespace MtmParkingLot {
 
     public:
         Vehicle(const LicensePlate& licensePlate, const Time& entranceTime,
-                unsigned int priceForFirstHour, unsigned int priceForHour) //constructor
-                : licensePlate(licensePlate), entranceTime(entranceTime),
-                  numOfTickets(0), priceForFirstHour(priceForFirstHour),
-                  priceForHour(priceForHour) {}
-
-
-
-
+                unsigned int priceForFirstHour, unsigned int priceForHour);
 
         const LicensePlate& getLicensePlate() const;
 
-        const Time& getEntranceTime();
+        const Time& getEntranceTime() const;
 
         unsigned int getNumOfTickets() const;
 
@@ -42,7 +35,7 @@ namespace MtmParkingLot {
 
         void checkForTicket(Time& inspectionTime);
 
-        virtual unsigned int getBill(Time& exitTime);
+        virtual unsigned int getBill(Time& exitTime) const;
     };
 
 
@@ -67,7 +60,7 @@ namespace MtmParkingLot {
     class Handicapped : public Car {
     public:
         Handicapped(const LicensePlate &licensePlate, const Time &entranceTime);
-        unsigned int getBill(Time &exitTime) override;
+        unsigned int getBill(Time &exitTime);
     };
 }
 #endif //HW3_VEHICLE_H

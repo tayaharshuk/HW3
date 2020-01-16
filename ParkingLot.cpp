@@ -2,45 +2,124 @@
 
 using namespace MtmParkingLot;
 
-ParkingResult MtmParkingLot::ParkingLot::enterMotor(LicensePlate &licensePlate,
-        Time &time) {
-    unsigned int place;
-    VehicleType parkingBlockType;
-    if (vehicleAlreadyExists(licensePlate,time,parkingBlockType,place)){
+//Parking Lot Class
+//C'tor
+ParkingLot::ParkingLot(unsigned int *parkingBlockSizes) :
+        motorParkingBlock(parkingBlockSizes[MOTORBIKE]),
+        carParkingBlock(parkingBlockSizes[CAR]),
+        handicappedParkingBlock(parkingBlockSizes[HANDICAPPED]) {}
 
-        ParkingLotPrinter::printVehicle(std::cout, MOTORBIKE, licensePlate,
-                                        time);
-        ParkingSpot parkingSpot(parkingBlockType,place);
+ParkingResult ParkingLot::enterParking(VehicleType vehicleType,
+        LicensePlate &licensePlate, Time entranceTime) {
+    Time time;
+    ParkingSpot parkingSpot;
+
+    if(vehicleAlreadyExists(licensePlate,&parkingSpot)){
+
+        ParkingLotPrinter::printVehicle(std::cout,
+                parkingSpot.getParkingBlock(), licensePlate,
+                getVehicle(parkingSpot,licensePlate)->getEntranceTime());
         ParkingLotPrinter::printEntryFailureAlreadyParked(std::cout,
                                                           parkingSpot);
         return VEHICLE_ALREADY_PARKED;
     }
 
+    switch (vehicleType){
+        case MOTORBIKE:
+            return enterMotor(licensePlate,entranceTime);
+
+        case CAR:
+            return enterCar(licensePlate,entranceTime);
+
+        case HANDICAPPED:
+            return enterHandicapped(licensePlate,entranceTime);
+    }
+}
+
+ParkingResult ParkingLot::exitParking(LicensePlate licensePlate, Time exitTime){
+    ParkingSpot parkingSpot;
+
+    if(!vehicleAlreadyExists(licensePlate, &parkingSpot)){
+        ParkingLotPrinter::printExitFailure(std::cout,licensePlate);
+        return VEHICLE_NOT_FOUND;
+    }
+
+    const Vehicle* vehicle = getVehicle(parkingSpot ,licensePlate);
+
+    switch (parkingSpot.getParkingBlock()){
+        case MOTORBIKE:
+            motorParkingBlock.remove(*vehicle);
+            break;
+        case CAR:
+            carParkingBlock.remove(*vehicle);
+            break;
+        case HANDICAPPED:
+            handicappedParkingBlock.remove(*vehicle);
+            break;
+    }
+    ParkingLotPrinter::printVehicle(std::cout,parkingSpot.getParkingBlock(),
+            licensePlate,vehicle->getEntranceTime());
+    ParkingLotPrinter::printExitSuccess(std::cout,parkingSpot,exitTime,
+            vehicle->getBill(exitTime));
+    return SUCCESS;
+}
+
+
+ParkingResult ParkingLot::getParkingSpot(LicensePlate licensePlate,
+                                         ParkingSpot &parkingSpot) const {
+    if (!vehicleAlreadyExists(licensePlate, &parkingSpot))
+        return VEHICLE_NOT_FOUND;
+
+    return SUCCESS;
+}
+
+void ParkingLot::inspectParkingLot(Time inspectionTime) {
+    ticketFilter filter;
+    int counter = 0;
+
+    for (UniqueArray<Vehicle, CompareVehicle>::Iterator i = motorParkingBlock.begin();
+        i!= motorParkingBlock.end(); ++i){
+        if(filter(*i)){
+            (*i).setTicket();
+            counter++;
+        }
+    }
+    //TODO: Taya - Car+Handicapped, print
+}
+
+bool ticketFilter::operator()(const Vehicle &element) const {
+    unsigned int numOfTickets = element.getNumOfTickets();
+    Time entranceTime = element.getEntranceTime();
+    unsigned int totalHours = (inspectionTime-entranceTime).toHours();
+    return ((numOfTickets==0) && (totalHours>24));
+}
+
+
+
+// === Private Functions ===
+ParkingResult MtmParkingLot::ParkingLot::enterMotor(LicensePlate &licensePlate,
+                                                    Time &time) {
+    unsigned int place;
     try {
         place = motorParkingBlock.insert(Motorbike(licensePlate, time));
     }
-    catch (UniqueArray<Motorbike,CompareVehicle>::UniqueArrayIsFullException& e) { //todo: what about full memory exceptions
-        ParkingLotPrinter::printVehicle(std::cout, MOTORBIKE, licensePlate,
-                                        time);
+    catch (UniqueArray<Motorbike,CompareVehicle>
+            ::UniqueArrayIsFullException& e){
+        ParkingLotPrinter::printVehicle(std::cout, MOTORBIKE,
+                licensePlate, time);
         ParkingLotPrinter::printEntryFailureNoSpot(std::cout);
         return NO_EMPTY_SPOT;
     }
     ParkingSpot parkingSpot(MOTORBIKE, place);
-    ParkingLotPrinter::printVehicle(std::cout, MOTORBIKE, licensePlate, time);
+    ParkingLotPrinter::printVehicle(std::cout, MOTORBIKE,
+            licensePlate, time);
     ParkingLotPrinter::printEntrySuccess(std::cout, parkingSpot);
     return SUCCESS;
 }
 
 ParkingResult ParkingLot::enterCar( LicensePlate &licensePlate, Time &time) {
     unsigned int place;
-    VehicleType parkingBlockType;
-    if (vehicleAlreadyExists(licensePlate,time,parkingBlockType,place){
-        ParkingLotPrinter::printVehicle(std::cout, CAR, licensePlate,
-                                        time);
-        ParkingSpot parkingSpot(parkingBlockType,place);
-        ParkingLotPrinter::printEntryFailureAlreadyParked(std::cout,parkingSpot);
-        return VEHICLE_ALREADY_PARKED;
-    }
+
     try {
         place = carParkingBlock.insert(Car(licensePlate,time));
     }
@@ -55,20 +134,9 @@ ParkingResult ParkingLot::enterCar( LicensePlate &licensePlate, Time &time) {
     return SUCCESS;
 }
 
-
-ParkingResult
-ParkingLot::enterHandicapped( LicensePlate &licensePlate, Time &time) {
+ParkingResult ParkingLot::enterHandicapped( LicensePlate &licensePlate,
+                                            Time &time) {
     unsigned int place;
-    VehicleType parkingBlockType;
-    if (vehicleAlreadyExists(licensePlate,time,parkingBlockType,place)){
-
-        ParkingLotPrinter::printVehicle(std::cout, HANDICAPPED, licensePlate,
-                                        time);
-        ParkingSpot parkingSpot(parkingBlockType,place);
-        ParkingLotPrinter::printEntryFailureAlreadyParked(std::cout,
-                                                          parkingSpot);
-        return VEHICLE_ALREADY_PARKED;
-    }
     VehicleType parkingBlock;
     try {
         place = handicappedParkingBlock.insert(Handicapped(licensePlate,time));
@@ -94,67 +162,37 @@ ParkingLot::enterHandicapped( LicensePlate &licensePlate, Time &time) {
 /*checks if the vehicle already exists at any parking block besides it is own, by
 checking its license plate
 */
-bool ParkingLot::vehicleAlreadyExists(LicensePlate& licensePlate, Time &time,
-                                      VehicleType &parkingBlockType,
-                                      unsigned int &place) const{
+bool ParkingLot::vehicleAlreadyExists(LicensePlate& licensePlate,
+                                      ParkingSpot* parkingSpot) const{
+    unsigned int index;
+    Time time;
 
-    if (motorParkingBlock.getIndex(Motorbike(licensePlate, Time()),
-                                   place)){
-        parkingBlockType = MOTORBIKE;
+    if (motorParkingBlock.getIndex(Motorbike(licensePlate, Time()),index)){
+        *parkingSpot = ParkingSpot(MOTORBIKE, index);
         return true;
     }
-    if (carParkingBlock.getIndex(Car(licensePlate,Time()),place)){
-        parkingBlockType = CAR;
+    else if (carParkingBlock.getIndex(Car(licensePlate,Time()),index)){
+        *parkingSpot = ParkingSpot(CAR, index);
         return true;
     }
-    else if (handicappedParkingBlock.getIndex(Handicapped(licensePlate,Time()),place)){
-        parkingBlockType = HANDICAPPED;
+    else if (handicappedParkingBlock.getIndex(Handicapped(licensePlate,Time()),index)){
+        *parkingSpot = ParkingSpot(HANDICAPPED, index);
         return true;
     }
     return false;
 }
 
-ParkingResult ParkingLot::exitParking(LicensePlate licensePlate, Time exitTime) {
-    unsigned int place;
-    VehicleType parkingBlockType;
-    Time entranceTime;
 
-    /* entrance time doesn't matter in order to check id the vehicle exists.
-    because the compare vehicle func uses the license plate to compare*/
-
-    if(vehicleAlreadyExists(licensePlate,entranceTime,parkingBlockType,place)){
-        switch (parkingBlockType){
-            case MOTORBIKE:{
-                const Motorbike* motor = motorParkingBlock[Motorbike(licensePlate,entranceTime)];
-                motorParkingBlock.remove(*motor);
-
-            }
-            case CAR:{
-                const Car* car = carParkingBlock[Car(licensePlate,entranceTime)];
-                carParkingBlock.remove(*car);
-            }
-
-            case HANDICAPPED:{
-                const Handicapped* handicapped = handicappedParkingBlock[Handicapped(licensePlate,entranceTime)];
-                handicappedParkingBlock.remove(*handicapped);
-            }
-        }
-        ParkingLotPrinter::printVehicle(std::cout,parkingBlockType,licensePlate,)
-        ParkingLotPrinter::printExitSuccess();
-        return SUCCESS;
+const Vehicle* ParkingLot::getVehicle(const ParkingSpot& parkingSpot,
+                                      const LicensePlate& licensePlate) const{
+    switch (parkingSpot.getParkingBlock()){
+        case MOTORBIKE:
+            return motorParkingBlock[Motorbike(licensePlate,Time())];
+        case CAR:
+            return carParkingBlock[Car(licensePlate,Time())];
+        case HANDICAPPED:
+            return handicappedParkingBlock[Handicapped(licensePlate,Time())];
     }
-    ParkingLotPrinter::printExitFailure(std::cout,licensePlate);
-    return VEHICLE_NOT_FOUND;
+    return nullptr;
 }
-
-ParkingResult ParkingLot::getParkingSpot(LicensePlate licensePlate,
-                                         ParkingSpot &parkingSpot) const {
-    Time time;
-    VehicleType parkingBlock;
-    unsigned place;
-    if(vehicleAlreadyExists(licensePlate,time,parkingBlock,place)){
-        parkingSpot(parkingBlock,place); //todo
-        return SUCCESS;
-    }
-    return VEHICLE_NOT_FOUND;
-}
+//Filter class

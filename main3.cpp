@@ -8,14 +8,15 @@ using namespace MtmParkingLot;
 
 //Create parkingLot + enterParking + exitParking
 void test1(){
+    string car1("car1");
     unsigned int sizes[] = {1,1,1};
     Time time(0,0,0);
     ParkingLot parkingLot(sizes);
     parkingLot.inspectParkingLot(time);
 
-    assert(parkingLot.enterParking(CAR,"car1",time) == SUCCESS);
-    assert(parkingLot.enterParking(CAR,"car1",time) == NO_EMPTY_SPOT);
-    assert(parkingLot.enterParking(MOTORBIKE,"car1",time) == VEHICLE_ALREADY_PARKED);
+    assert(parkingLot.enterParking(CAR,car1,time) == SUCCESS);
+    assert(parkingLot.enterParking(CAR,car1,time) == NO_EMPTY_SPOT);
+    assert(parkingLot.enterParking(MOTORBIKE,car1,time) == VEHICLE_ALREADY_PARKED);
     assert(parkingLot.enterParking(MOTORBIKE,"bike1",time) == SUCCESS);
     assert(parkingLot.enterParking(MOTORBIKE,"bike1",time) == NO_EMPTY_SPOT);
 

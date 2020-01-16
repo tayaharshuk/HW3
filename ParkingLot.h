@@ -9,72 +9,23 @@
 #include <cstring>
 #include "ParkingLotPrinter.h"
 
-
 namespace MtmParkingLot {
 
     using namespace ParkingLotUtils;
     using std::ostream;
 
     class ParkingLot {
-        UniqueArray<Motorbike, CompareVehicle> motorParkingBlock;
-        UniqueArray<Car, CompareVehicle> carParkingBlock;
-        UniqueArray<Handicapped, CompareVehicle> handicappedParkingBlock;
+        UniqueArray<Vehicle, CompareVehicle> motorParkingBlock;
+        UniqueArray<Vehicle, CompareVehicle> carParkingBlock;
+        UniqueArray<Vehicle, CompareVehicle> handicappedParkingBlock;
 
-
-        /*class LicensePlateFilter: public UniqueArray<Vehicle, CompareVehicle>::Filter {
-            LicensePlate licensePlate;
-        public:
-            const LicensePlate &getLicensePlate() const {
-                return licensePlate;
-            }
-
-            void setLicensePlate(const LicensePlate &_licensePlate) {
-                licensePlate = _licensePlate;
-            }
-
-            bool operator()(const Vehicle &element) const override {
-                return licensePlate == element.getLicensePlate();
-            }
-        };
-
-        LicensePlateFilter filter;
-        */
-        class ticketFilter: public UniqueArray<Vehicle,CompareVehicle>::Filter{
-
-            Time inspectionTime;
-            bool operator()(const Vehicle &element) const override {
-                unsigned int numOfTickets = element.getNumOfTickets();
-                Time entranceTime = element.getEntranceTime(); //todo:const
-                unsigned int totalHours = (inspectionTime-entranceTime).toHours();
-                return ((numOfTickets==0) && (totalHours>24));
-            }
-        };
-        ticketFilter filter;
     public:
-
-        explicit ParkingLot(unsigned int parkingBlockSizes[]) :
-                motorParkingBlock(parkingBlockSizes[MOTORBIKE]),
-                carParkingBlock(parkingBlockSizes[CAR]),
-                handicappedParkingBlock(parkingBlockSizes[HANDICAPPED]) {};
-
+        explicit ParkingLot(unsigned int parkingBlockSizes[]);;
         ~ParkingLot() = default;
 
 
-        ParkingResult enterParking(VehicleType vehicleType, LicensePlate& licensePlate,
-                     Time entranceTime) {
-
-            switch (vehicleType){
-                case MOTORBIKE:
-                    return enterMotor(licensePlate,entranceTime);
-
-                case CAR:
-                    return enterCar(licensePlate,entranceTime);
-
-                case HANDICAPPED:
-                    return  enterHandicapped(licensePlate,entranceTime);
-            }
-        }
-
+        ParkingResult enterParking(VehicleType vehicleType,
+                LicensePlate &licensePlate, Time entranceTime);
 
         //todo
         ParkingResult exitParking(LicensePlate licensePlate, Time exitTime);
@@ -82,32 +33,55 @@ namespace MtmParkingLot {
         ParkingResult getParkingSpot(LicensePlate licensePlate,
                                      ParkingSpot &parkingSpot) const;
 
-
-
-        void inspectParkingLot(Time inspectionTime){};
-
+        void inspectParkingLot(Time inspectionTime);
 
         friend ostream &operator<<(ostream &os, const ParkingLot &parkingLot);
 
 
     private:
 
-        ParkingResult enterMotor( LicensePlate& licensePlate, Time& time);
-        ParkingResult enterCar( LicensePlate& licensePlate, Time& time);
-        ParkingResult enterHandicapped( LicensePlate& licensePlate,Time& time);
-        bool vehicleAlreadyExists(LicensePlate& licensePlate, Time& time, VehicleType& parkingBlockType,
-                                  unsigned int& place) const; //todo:const
+        ParkingResult enterMotor(LicensePlate &licensePlate, Time &time);
 
+        ParkingResult enterCar(LicensePlate &licensePlate, Time &time);
 
+        ParkingResult enterHandicapped(LicensePlate &licensePlate, Time &time);
 
+        bool vehicleAlreadyExists(LicensePlate &licensePlate,
+                                  ParkingSpot* parkingSpot) const; //todo:const
+
+        const Vehicle* getVehicle(const ParkingSpot& parkingSpot,
+                                      const LicensePlate& licensePlate) const ;
     };
     //end of parkingLot class
 
+    class ticketFilter :
+            public UniqueArray<Vehicle, CompareVehicle>::Filter {
+
+        Time inspectionTime;
+    public:
+        bool operator()(const Vehicle &element) const override;
+    };
 
 
 
+/*class LicensePlateFilter: public UniqueArray<Vehicle, CompareVehicle>::Filter {
+    LicensePlate licensePlate;
+public:
+    const LicensePlate &getLicensePlate() const {
+        return licensePlate;
+    }
 
+    void setLicensePlate(const LicensePlate &_licensePlate) {
+        licensePlate = _licensePlate;
+    }
 
+    bool operator()(const Vehicle &element) const override {
+        return licensePlate == element.getLicensePlate();
+    }
+};
 
+LicensePlateFilter filter;
+*/
+}
 
 #endif //MTMPARKINGLOT_PARKINGLOT_H
