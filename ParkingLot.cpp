@@ -45,11 +45,28 @@ ParkingResult ParkingLot::exitParking(LicensePlate licensePlate, Time exitTime){
     }
 
     const Vehicle* vehicle = getVehicle(parkingSpot ,licensePlate);
+    Vehicle* copy;
 
     ParkingLotPrinter::printVehicle(std::cout,parkingSpot.getParkingBlock(),
                                     licensePlate,vehicle->getEntranceTime());
+
+    switch (vehicle->getType()){
+        case MOTORBIKE:
+            copy = new Motorbike(*vehicle);
+            break;
+        case CAR:
+            copy = new Car(*vehicle);
+            break;
+        default:
+            copy = new Handicapped(*vehicle);
+            break;
+    }
+
+
     ParkingLotPrinter::printExitSuccess(std::cout,parkingSpot,exitTime,
-                                        vehicle->getBill(exitTime));
+                                        copy->getBill(exitTime));
+
+    delete copy;
 
     switch (parkingSpot.getParkingBlock()){
         case MOTORBIKE:

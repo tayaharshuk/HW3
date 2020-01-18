@@ -8,7 +8,6 @@
 using namespace ParkingLotUtils;
 
 namespace MtmParkingLot {
-
     /** Vehicle
      *
      */
@@ -20,18 +19,11 @@ namespace MtmParkingLot {
         unsigned int numOfTickets;
         unsigned int priceForFirstHour;
         unsigned int priceForHour;
+        VehicleType type;
 
     public:
         Vehicle(const LicensePlate& licensePlate, const Time& entranceTime,
-                unsigned int priceForFirstHour, unsigned int priceForHour);
-
-        virtual Vehicle *Clone() const{
-            //Vehicle();
-        }
-
-        Vehicle(const Vehicle& v){
-            v.Clone();//TODO
-        }
+                unsigned int priceForFirstHour, unsigned int priceForHour, VehicleType type);
 
         virtual ~Vehicle() = default;
 
@@ -46,6 +38,8 @@ namespace MtmParkingLot {
         void checkForTicket(Time& inspectionTime);
 
         virtual unsigned int getBill(Time& exitTime) const;
+
+        VehicleType getType() const;
     };
 
 
@@ -60,16 +54,19 @@ namespace MtmParkingLot {
     class Motorbike : public Vehicle {
     public:
         Motorbike(const LicensePlate &licensePlate, const Time &entranceTime);
+        Motorbike(const Vehicle& v);
     };
 
     class Car : public Vehicle {
     public:
         Car(const LicensePlate &licensePlate, const Time &entranceTime);
+        Car(const Vehicle& c);
     };
 
     class Handicapped : public Car {
     public:
         Handicapped(const LicensePlate &licensePlate, const Time &entranceTime);
+        Handicapped(const Vehicle& v);
         unsigned int getBill(Time &exitTime) const override;
     };
 }

@@ -16,16 +16,30 @@ using namespace MtmParkingLot;
 
 //C'tors
 Motorbike::Motorbike(const LicensePlate &licensePlate, const Time &entranceTime)
-        : Vehicle(licensePlate, entranceTime,MOTOR_PRICE_FIRST,MOTOR_PRICE) {}
+        : Vehicle(licensePlate, entranceTime,MOTOR_PRICE_FIRST,MOTOR_PRICE, MOTORBIKE) {}
+
+Motorbike::Motorbike(const Vehicle& v) :
+Vehicle(v.getLicensePlate(), v.getEntranceTime(), MOTOR_PRICE_FIRST, MOTOR_PRICE, MOTORBIKE){}
 
 Car::Car(const LicensePlate &licensePlate, const Time &entranceTime)
-        : Vehicle(licensePlate, entranceTime,CAR_PRICE_FIRST,CAR_PRICE) {}
+        : Vehicle(licensePlate, entranceTime,CAR_PRICE_FIRST,CAR_PRICE, CAR) {}
+
+Car::Car(const Vehicle& v) :
+Vehicle(v.getLicensePlate(), v.getEntranceTime(), CAR_PRICE_FIRST, CAR_PRICE, CAR){}
 
 Handicapped::Handicapped(const LicensePlate &licensePlate,const Time &entranceTime)
-             : Car(licensePlate, entranceTime) {}
+             : Car(licensePlate, entranceTime){
+    type = HANDICAPPED;
+}
 
 unsigned int Handicapped::getBill(Time &exitTime) const {
     return HANDICAPPED_PRICE + TICKET*numOfTickets;
+}
+
+
+Handicapped::Handicapped(const Vehicle& v) :
+        Car(v.getLicensePlate(), v.getEntranceTime()){
+    type = HANDICAPPED;
 }
 
 /** getBill
@@ -70,9 +84,13 @@ const Time &Vehicle::getEntranceTime() const {
 }
 
 Vehicle::Vehicle(const LicensePlate &licensePlate, const Time &entranceTime,
-                 unsigned int priceForFirstHour, unsigned int priceForHour) //constructor
+                 unsigned int priceForFirstHour, unsigned int priceForHour, VehicleType type) //constructor
         : licensePlate(licensePlate), entranceTime(entranceTime),
           numOfTickets(0), priceForFirstHour(priceForFirstHour),
-          priceForHour(priceForHour) {}
+          priceForHour(priceForHour), type(type) {}
+
+VehicleType Vehicle::getType() const {
+    return type;
+}
 
 
