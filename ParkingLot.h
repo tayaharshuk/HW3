@@ -20,7 +20,7 @@ namespace MtmParkingLot {
         UniqueArray<Vehicle, CompareVehicle> handicappedParkingBlock;
 
     public:
-        explicit ParkingLot(unsigned int parkingBlockSizes[]);;
+        explicit ParkingLot(unsigned int parkingBlockSizes[]);
         ~ParkingLot() = default;
 
 
