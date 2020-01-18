@@ -1,0 +1,104 @@
+8
+2
+3
+PRINT
+EXIT xHibjy
+ENTER Car toYOs
+ENTER Car hwH1jE
+PASS_TIME 575
+PRINT
+PRINT
+EXIT XHeu
+EXIT BlGxh
+ENTER Motorbike BlGxh
+PASS_TIME 322
+EXIT toYOs
+EXIT XHeu
+EXIT eh4h
+ENTER Car hwH1jE
+INSPECT
+ENTER Car hwH1jE
+ENTER Car ZFLW54
+EXIT xHibjy
+ENTER Motorbike MXH7Oon
+ENTER Motorbike MXH7Oon
+EXIT MXH7Oon
+ENTER Handicapped xHibjy
+PASS_TIME 487
+EXIT BzRHBv
+ENTER Handicapped iUNZks
+ENTER Motorbike BlGxh
+ENTER Motorbike muUKVpB
+EXIT hwH1jE
+EXIT 4qel
+ENTER Handicapped iUNZks
+ENTER Handicapped iUNZks
+EXIT ZFLW54
+EXIT BlGxh
+PASS_TIME 948
+PASS_TIME 940
+INSPECT
+ENTER Car toYOs
+ENTER Car eh4h
+INSPECT
+INSPECT
+ENTER Car XHeu
+ENTER Car UqKuL
+EXIT BlGxh
+PASS_TIME 367
+PASS_TIME 128
+EXIT BlGxh
+ENTER Car hwH1jE
+EXIT MXH7Oon
+ENTER Motorbike muUKVpB
+ENTER Car eh4h
+ENTER Motorbike muUKVpB
+ENTER Handicapped BzRHBv
+ENTER Car XHeu
+ENTER Motorbike muUKVpB
+ENTER Car 0nxUY6
+INSPECT
+EXIT ZFLW54
+ENTER Car 0nxUY6
+EXIT iUNZks
+PASS_TIME 259
+PASS_TIME 775
+ENTER Motorbike BlGxh
+EXIT BlGxh
+EXIT SCe4wm
+INSPECT
+ENTER Car UqKuL
+ENTER Handicapped iUNZks
+EXIT UqKuL
+ENTER Motorbike BlGxh
+ENTER Car eh4h
+ENTER Motorbike muUKVpB
+ENTER Motorbike muUKVpB
+ENTER Motorbike MXH7Oon
+PASS_TIME 28
+ENTER Car eh4h
+ENTER Car XHeu
+ENTER Car toYOs
+EXIT 4qel
+EXIT XHeu
+ENTER Motorbike muUKVpB
+ENTER Handicapped xHibjy
+EXIT SCe4wm
+ENTER Car toYOs
+PASS_TIME 358
+ENTER Motorbike muUKVpB
+EXIT UqKuL
+EXIT UqKuL
+EXIT eh4h
+ENTER Motorbike muUKVpB
+ENTER Car toYOs
+PASS_TIME 388
+ENTER Car hwH1jE
+ENTER Handicapped BzRHBv
+ENTER Motorbike BlGxh
+ENTER Handicapped xHibjy
+ENTER Motorbike BlGxh
+PRINT
+ENTER Car UqKuL
+INSPECT
+PRINT

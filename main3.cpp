@@ -19,7 +19,9 @@ void test1(){
     unsigned int sizes[] = {1,1,1};
     Time time(0,0,0);
     ParkingLot parkingLot(sizes);
-    parkingLot.inspectParkingLot(time);
+    //parkingLot.inspectParkingLot(time);
+
+    assert(parkingLot.exitParking(car1, time) == VEHICLE_NOT_FOUND);
 
     assert(parkingLot.enterParking(CAR,car1,time) == SUCCESS);
     assert(parkingLot.enterParking(CAR,car1,time) == VEHICLE_ALREADY_PARKED);
