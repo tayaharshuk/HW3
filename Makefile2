@@ -1,0 +1,49 @@
+#Defines
+CC  = gcc
+EXEC    = matamazom
+ADT = amount_set
+AMOUNT_SET_O_FILES  = amount_set.o amount_set_main.o amount_set_tests.o
+MATAMAZOM_O_FILES   = matamazom.o amount_set.o matamazom_print.o order.o \
+product.o utilities.o matamazom_main.o matamazom_tests.o
+COMP_FLAGS   = -std=c99 -Wall -Werror -pedantic-errors -DNDEBUG -g
+LINKER_FLAGS	= -L. -lm -lmtm
+TEST_ROOT = tests/
+#matamazom tests
+$(EXEC):$(MATAMAZOM_O_FILES)
+	$(CC) $(MATAMAZOM_O_FILES) -o $@ $(LINKER_FLAGS)
+#amount_set tests
+$(ADT): $(AMOUNT_SET_O_FILES)
+	$(CC) $(AMOUNT_SET_O_FILES) -o $@ $(LINKER_FLAGS)
+#amount_set related files
+amount_set_main.o: $(TEST_ROOT)amount_set_main.c $(TEST_ROOT)amount_set_tests.h \
+$(TEST_ROOT)test_utilities.h
+	$(CC) -c $(COMP_FLAGS) $(TEST_ROOT)$*.c
+amount_set_tests.o: $(TEST_ROOT)amount_set_tests.c amount_set.h \
+$(TEST_ROOT)amount_set_tests.h $(TEST_ROOT)test_utilities.h
+	$(CC) -c $(COMP_FLAGS) $(TEST_ROOT)$*.c
+amount_set.o: amount_set.c amount_set.h
+	$(CC) -c $(COMP_FLAGS) $*.c
+#matamazom related files
+matamazom_main.o: $(TEST_ROOT)matamazom_main.c $(TEST_ROOT)matamazom_tests.h \
+$(TEST_ROOT)test_utilities.h
+	$(CC) -c $(COMP_FLAGS) $(TEST_ROOT)$*.c
+matamazom.o: matamazom.c set.h product.h matamazom.h amount_set.h order.h \
+utilities.h matamazom_print.h
+	$(CC) -c $(COMP_FLAGS) $*.c
+matamazom_tests.o: $(TEST_ROOT)matamazom_tests.c $(TEST_ROOT)matamazom_tests.h \
+matamazom.h $(TEST_ROOT)test_utilities.h
+	$(CC) -c $(COMP_FLAGS) $(TEST_ROOT)$*.c
+matamazom_print.o: matamazom_print.c matamazom_print.h
+	$(CC) -c $(COMP_FLAGS) $*.c
+order.o: order.c order.h amount_set.h product.h matamazom.h utilities.h
+	$(CC) -c $(COMP_FLAGS) $*.c
+product.o: product.c product.h matamazom.h
+	$(CC) -c $(COMP_FLAGS) $*.c
+utilities.o: utilities.c utilities.h matamazom.h amount_set.h
+	$(CC) -c $(COMP_FLAGS) $*.c
+run_tests:
+	valgrind --leak-check=full ./amount_set
+	valgrind --leak-check=full ./matamazom
+clean:
+	rm -f $(MATAMAZOM_O_FILES) $(EXEC)
+	rm -f $(AMOUNT_SET_O_FILES) $(ADT)

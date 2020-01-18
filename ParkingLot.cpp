@@ -4,6 +4,7 @@ using namespace MtmParkingLot;
 
 //Parking Lot Class
 //C'tor
+
 ParkingLot::ParkingLot(unsigned int *parkingBlockSizes) :
         motorParkingBlock(parkingBlockSizes[MOTORBIKE]),
         carParkingBlock(parkingBlockSizes[CAR]),
