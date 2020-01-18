@@ -50,17 +50,6 @@ namespace MtmParkingLot {
             ParkingLotPrinter::printParkingSpot(os,parkingSpot);
         }
 
-        for (UniqueArray<Vehicle, CompareVehicle>::Iterator i = parkingLot.carParkingBlock.begin();
-             i != parkingLot.carParkingBlock.end(); ++i) {
-            unsigned int index;
-            parkingLot.carParkingBlock.getIndex((*i),index);
-            ParkingSpot parkingSpot(CAR,index);
-            ParkingLotPrinter::printVehicle(os,(*i).getType(),
-                                            (*i).getLicensePlate(),(*i).getEntranceTime());
-            ParkingLotPrinter::printParkingSpot(os,parkingSpot);
-
-        }
-
         for (UniqueArray<Vehicle, CompareVehicle>::Iterator i = parkingLot.handicappedParkingBlock.begin();
              i != parkingLot.handicappedParkingBlock.end(); ++i) {
             unsigned int index;
@@ -71,6 +60,17 @@ namespace MtmParkingLot {
             ParkingLotPrinter::printParkingSpot(os,parkingSpot);
 
         }
+
+        for (UniqueArray<Vehicle, CompareVehicle>::Iterator i = parkingLot.carParkingBlock.begin();
+             i != parkingLot.carParkingBlock.end(); ++i) {
+            unsigned int index;
+            parkingLot.carParkingBlock.getIndex((*i),index);
+            ParkingSpot parkingSpot(CAR,index);
+            ParkingLotPrinter::printVehicle(os,(*i).getType(),
+                                            (*i).getLicensePlate(),(*i).getEntranceTime());
+            ParkingLotPrinter::printParkingSpot(os,parkingSpot);
+        }
+
         return os;
     }
 

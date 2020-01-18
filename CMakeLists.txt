@@ -8,3 +8,7 @@ add_executable(HW3 UniqueArray.h UniqueArrayImp.h UniqueArrayExceptions.h
         ParkingSpot.h ParkingLot.h Time.h MtmParkingLot.cpp ParkingLotPrinter.cpp
         ParkingLotPrinter.h ParkingLotTypes.h ParkingSpot.cpp Time.cpp Vehicle.cpp
         Vehicle.h ParkingLot.cpp)
+add_executable(mtm_ex3 UniqueArray.h UniqueArrayImp.h UniqueArrayExceptions.h
+        ParkingSpot.h ParkingLot.h Time.h MtmParkingLot.cpp ParkingLotPrinter.cpp
+        ParkingLotPrinter.h ParkingLotTypes.h ParkingSpot.cpp Time.cpp Vehicle.cpp
+        Vehicle.h ParkingLot.cpp)

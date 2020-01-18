@@ -37,6 +37,8 @@ Handicapped::Handicapped(const LicensePlate &licensePlate,const Time &entranceTi
 }
 
 unsigned int Handicapped::getBill(Time &exitTime) const {
+    if((getEntranceTime()-exitTime).toHours() == 0)
+        return 0;
     return HANDICAPPED_PRICE + TICKET*numOfTickets;
 }
 

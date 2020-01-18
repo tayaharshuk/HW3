@@ -1,104 +1,104 @@
-10
-9
-8
+7
+6
+1
+ENTER Motorbike cCITVQu
+ENTER Handicapped 63TZs
+ENTER Handicapped foBt
+ENTER Handicapped zjon
+ENTER Car acsv
+EXIT eBcYb
+PASS_TIME 747
+ENTER Car DOLXQ
 PRINT
-EXIT nrRf
-ENTER Handicapped Ozft
-EXIT Ozft
-EXIT rnjD
-ENTER Handicapped rnjD
-ENTER Car nrRf
+EXIT uoWoo0
+PASS_TIME 416
 INSPECT
-EXIT OK3r
-ENTER Handicapped dHoX
-ENTER Car 7PB8J
-PASS_TIME 342
-EXIT 7PB8J
-EXIT rnjD
-ENTER Motorbike AUFw
-ENTER Handicapped cUrLxBX
-PASS_TIME 588
-EXIT unJk
-PASS_TIME 284
-ENTER Handicapped cUrLxBX
+EXIT mqwNFW
+ENTER Motorbike WcrY
+EXIT iLLUS
+ENTER Handicapped foBt
+ENTER Motorbike WcrY
+ENTER Motorbike by8CW
+EXIT WcrY
+EXIT mqwNFW
+ENTER Motorbike cCITVQu
+ENTER Car acsv
+ENTER Car O7mbi
+EXIT LVFBc
+EXIT iLLUS
+EXIT acsv
+ENTER Handicapped 63TZs
 INSPECT
-EXIT vlXPn
+ENTER Handicapped LVFBc
+INSPECT
+PASS_TIME 187
+ENTER Motorbike uoWoo0
+ENTER Handicapped zjon
+EXIT acsv
+INSPECT
+ENTER Motorbike WcrY
+EXIT uoWoo0
+EXIT uoWoo0
+ENTER Motorbike eBcYb
+ENTER Motorbike eBcYb
+EXIT by8CW
+PASS_TIME 244
+ENTER Motorbike mqwNFW
+ENTER Handicapped foBt
+ENTER Handicapped LVFBc
 PRINT
-PRINT
-EXIT dHoX
-ENTER Handicapped B8jvE
-EXIT B8jvE
-ENTER Motorbike AUFw
-ENTER Handicapped OK3r
-ENTER Car Y7v32Dl
-ENTER Car 5DOkDqv
-EXIT 5DOkDqv
+ENTER Motorbike eBcYb
+EXIT zjon
+ENTER Handicapped PHw7paU
+PASS_TIME 696
+EXIT by8CW
 INSPECT
-ENTER Car nrRf
-PASS_TIME 701
-EXIT 7PB8J
-ENTER Car 5DOkDqv
+ENTER Handicapped foBt
+ENTER Car O7mbi
+EXIT eBcYb
+ENTER Car DOLXQ
+EXIT cCITVQu
 INSPECT
-EXIT cUrLxBX
-EXIT ywFYk
-ENTER Handicapped vlXPn
-ENTER Handicapped vlXPn
+ENTER Handicapped zjon
+ENTER Handicapped foBt
+EXIT WcrY
 INSPECT
-ENTER Car ywFYk
-ENTER Handicapped OK3r
-ENTER Motorbike AUFw
-EXIT AUFw
-ENTER Handicapped dHoX
-ENTER Motorbike QDCV7
-ENTER Handicapped B8jvE
-EXIT OK3r
-ENTER Handicapped dHoX
-EXIT OK3r
-PASS_TIME 851
-PRINT
-ENTER Handicapped OK3r
-EXIT QDCV7
-ENTER Car Y7v32Dl
-EXIT cUrLxBX
-ENTER Handicapped Ozft
-EXIT unJk
-ENTER Handicapped OK3r
-EXIT QDCV7
-ENTER Motorbike QDCV7
-EXIT Ozft
-ENTER Handicapped Ozft
-PASS_TIME 657
+ENTER Handicapped LVFBc
+EXIT DOLXQ
+EXIT by8CW
+ENTER Handicapped LVFBc
+ENTER Handicapped 63TZs
+ENTER Motorbike cCITVQu
+ENTER Car O7mbi
+ENTER Motorbike uoWoo0
+EXIT PHw7paU
+ENTER Handicapped foBt
 INSPECT
-EXIT ywFYk
-ENTER Motorbike AUFw
-ENTER Handicapped B8jvE
-EXIT unJk
-ENTER Motorbike QDCV7
-EXIT cUrLxBX
-ENTER Handicapped dHoX
-ENTER Handicapped Ozft
-EXIT Ozft
-ENTER Car ywFYk
-ENTER Handicapped dHoX
-ENTER Car unJk
-ENTER Car ywFYk
-ENTER Car unJk
-ENTER Car Y7v32Dl
-ENTER Handicapped B8jvE
+EXIT PHw7paU
+EXIT 63TZs
+EXIT 63TZs
+ENTER Car acsv
+ENTER Car iLLUS
+EXIT zjon
+EXIT O7mbi
+ENTER Handicapped 63TZs
+ENTER Motorbike mqwNFW
+ENTER Motorbike eBcYb
+ENTER Car acsv
+ENTER Handicapped PHw7paU
+EXIT 63TZs
+EXIT cCITVQu
+EXIT foBt
+EXIT foBt
 INSPECT
-EXIT unJk
-ENTER Car Y7v32Dl
-INSPECT
-ENTER Handicapped dHoX
-EXIT rnjD
-ENTER Car Y7v32Dl
-EXIT OK3r
-ENTER Car 7PB8J
-ENTER Handicapped dHoX
-EXIT unJk
-ENTER Handicapped rnjD
-ENTER Motorbike AUFw
-EXIT dHoX
-ENTER Handicapped Ozft
-EXIT rnjD
+EXIT mqwNFW
+ENTER Car O7mbi
+ENTER Handicapped PHw7paU
+ENTER Handicapped zjon
+PASS_TIME 973
+PASS_TIME 992
+ENTER Motorbike WcrY
+ENTER Car O7mbi
+EXIT iLLUS
+ENTER Motorbike cCITVQu
 PRINT

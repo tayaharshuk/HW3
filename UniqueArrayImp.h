@@ -36,7 +36,7 @@ unsigned int UniqueArray<Element, Compare>::insert(const Element &element) {
         throw OutOfMemory(__LINE__);
     }
 
-    while ( next<size && arr[++next] != NULL);
+    while ( ++next<size && arr[next] != NULL);
     return index;
 }
 
