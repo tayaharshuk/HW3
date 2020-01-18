@@ -19,18 +19,18 @@ bool UniqueArray<Element, Compare>::remove(const Element &element) {
 
 template<class Element, class Compare>
 unsigned int UniqueArray<Element, Compare>::insert(const Element &element) {
-    unsigned int index = next;
-    for ( int i = 0 ; i < size ; i++){
-        if (arr[i] != NULL && compare(*(arr[i]),element)){ //is not empty
-            return i;
-        }
-    }
+    unsigned int index;
+    if(getIndex(element,index))
+        return index;
+
     // if does not exist- insert in the first available place
     if(next >= size)
         throw UniqueArrayIsFullException();
 
+    index = next;
+
     try {
-        arr[next] = new Element(element);
+        arr[index] = new Element(element);
     }
     catch(std::exception& e){
         throw OutOfMemory(__LINE__);

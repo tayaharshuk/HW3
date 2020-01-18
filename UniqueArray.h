@@ -103,8 +103,9 @@ public:
     };
 
     Iterator begin() const{
-        Iterator i(arr ,size);
-        return i;
+        if(size == 0)
+            return end();
+        return Iterator(arr ,size);
     }
 
     Iterator end() const{

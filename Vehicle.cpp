@@ -19,17 +19,21 @@ Motorbike::Motorbike(const LicensePlate &licensePlate, const Time &entranceTime)
         : Vehicle(licensePlate, entranceTime,MOTOR_PRICE_FIRST,MOTOR_PRICE, MOTORBIKE) {}
 
 Motorbike::Motorbike(const Vehicle& v) :
-Vehicle(v.getLicensePlate(), v.getEntranceTime(), MOTOR_PRICE_FIRST, MOTOR_PRICE, MOTORBIKE){}
+Vehicle(v.getLicensePlate(), v.getEntranceTime(), MOTOR_PRICE_FIRST, MOTOR_PRICE, MOTORBIKE){
+    numOfTickets = v.getNumOfTickets();
+}
 
 Car::Car(const LicensePlate &licensePlate, const Time &entranceTime)
         : Vehicle(licensePlate, entranceTime,CAR_PRICE_FIRST,CAR_PRICE, CAR) {}
 
 Car::Car(const Vehicle& v) :
-Vehicle(v.getLicensePlate(), v.getEntranceTime(), CAR_PRICE_FIRST, CAR_PRICE, CAR){}
+Vehicle(v.getLicensePlate(), v.getEntranceTime(), CAR_PRICE_FIRST, CAR_PRICE, CAR){
+    numOfTickets = v.getNumOfTickets();
+}
 
 Handicapped::Handicapped(const LicensePlate &licensePlate,const Time &entranceTime)
              : Car(licensePlate, entranceTime){
-    type = HANDICAPPED;
+    this->type = HANDICAPPED;
 }
 
 unsigned int Handicapped::getBill(Time &exitTime) const {
@@ -40,6 +44,7 @@ unsigned int Handicapped::getBill(Time &exitTime) const {
 Handicapped::Handicapped(const Vehicle& v) :
         Car(v.getLicensePlate(), v.getEntranceTime()){
     type = HANDICAPPED;
+    numOfTickets = v.getNumOfTickets();
 }
 
 /** getBill

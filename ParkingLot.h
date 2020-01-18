@@ -55,7 +55,7 @@ namespace MtmParkingLot {
             unsigned int index;
             parkingLot.carParkingBlock.getIndex((*i),index);
             ParkingSpot parkingSpot(CAR,index);
-            ParkingLotPrinter::printVehicle(os,CAR,
+            ParkingLotPrinter::printVehicle(os,(*i).getType(),
                                             (*i).getLicensePlate(),(*i).getEntranceTime());
             ParkingLotPrinter::printParkingSpot(os,parkingSpot);
 
@@ -65,8 +65,8 @@ namespace MtmParkingLot {
              i != parkingLot.handicappedParkingBlock.end(); ++i) {
             unsigned int index;
             parkingLot.handicappedParkingBlock.getIndex((*i),index);
-            ParkingSpot parkingSpot(CAR,index);
-            ParkingLotPrinter::printVehicle(os,CAR,
+            ParkingSpot parkingSpot(HANDICAPPED,index);
+            ParkingLotPrinter::printVehicle(os,HANDICAPPED,
                                             (*i).getLicensePlate(),(*i).getEntranceTime());
             ParkingLotPrinter::printParkingSpot(os,parkingSpot);
 
@@ -96,7 +96,7 @@ namespace MtmParkingLot {
 
         Time inspectionTime;
     public:
-        ticketFilter(const Time &inspectionTime);
+        explicit ticketFilter(const Time &inspectionTime);
 
         bool operator()(const Vehicle &element) const override;
     };

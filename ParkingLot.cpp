@@ -17,7 +17,7 @@ ParkingResult ParkingLot::enterParking(VehicleType vehicleType,
     if(vehicleAlreadyExists(licensePlate,&parkingSpot)){
 
         ParkingLotPrinter::printVehicle(std::cout,
-                parkingSpot.getParkingBlock(), licensePlate,
+                getVehicle(parkingSpot,licensePlate)->getType(), licensePlate,
                 getVehicle(parkingSpot,licensePlate)->getEntranceTime());
         ParkingLotPrinter::printEntryFailureAlreadyParked(std::cout,
                                                           parkingSpot);
@@ -47,8 +47,9 @@ ParkingResult ParkingLot::exitParking(LicensePlate licensePlate, Time exitTime){
     const Vehicle* vehicle = getVehicle(parkingSpot ,licensePlate);
     Vehicle* copy;
 
-    ParkingLotPrinter::printVehicle(std::cout,parkingSpot.getParkingBlock(),
-                                    licensePlate,vehicle->getEntranceTime());
+    ParkingLotPrinter::printVehicle(std::cout,
+            getVehicle(parkingSpot,licensePlate)->getType(),
+            licensePlate,vehicle->getEntranceTime());
 
     switch (vehicle->getType()){
         case MOTORBIKE:
@@ -167,7 +168,7 @@ ParkingResult ParkingLot::enterCar( LicensePlate &licensePlate, Time &time) {
     }
     ParkingSpot parkingSpot(CAR,place);
     ParkingLotPrinter::printVehicle(std::cout,CAR,licensePlate,time);
-    ParkingLotPrinter::printEntrySuccess(std::cout,parkingSpot); //TODO: why is it undeclard?
+    ParkingLotPrinter::printEntrySuccess(std::cout,parkingSpot);
     return SUCCESS;
 }
 
