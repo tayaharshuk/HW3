@@ -96,6 +96,8 @@ namespace MtmParkingLot {
 
         Time inspectionTime;
     public:
+        ticketFilter(const Time &inspectionTime);
+
         bool operator()(const Vehicle &element) const override;
     };
 

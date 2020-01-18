@@ -93,7 +93,7 @@ ParkingResult ParkingLot::getParkingSpot(LicensePlate licensePlate,
 }
 
 void ParkingLot::inspectParkingLot(Time inspectionTime) {
-    ticketFilter filter;
+    ticketFilter filter(inspectionTime);
     int counter = 0;
 
      for (UniqueArray<Vehicle, CompareVehicle>::Iterator i = motorParkingBlock.begin();
@@ -129,6 +129,8 @@ bool ticketFilter::operator()(const Vehicle &element) const {
     return ((numOfTickets==0) && (totalHours>24));
 }
 
+ticketFilter::ticketFilter(const Time &inspectionTime) : inspectionTime(
+        inspectionTime) {}
 
 
 // === Private Functions ===

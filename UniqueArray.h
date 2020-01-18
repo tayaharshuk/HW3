@@ -54,18 +54,25 @@ public:
     };
 
     class Iterator{
-        Element* element;
+        Element** arr;
         unsigned int size;
         unsigned int counter;
 
     public:
-        explicit Iterator(Element* elementPtr, unsigned int size) :
-        element(elementPtr), size(size), counter(0){}
+        explicit Iterator(Element** arr, unsigned int size) :
+        arr(arr), size(size), counter(0){
+            if(arr!= nullptr && arr[0] == nullptr)
+                ++(*this);
+        }
 
         ~Iterator() = default;
 
         bool operator==(const Iterator &rhs) const {
-            return element == rhs.element;
+            if(arr == nullptr && rhs.arr == nullptr)
+                return true;
+            if(arr == nullptr || rhs.arr == nullptr)
+                return false;
+            return arr[counter] == rhs.arr[rhs.counter];
         }
 
         bool operator!=(const Iterator &rhs) const {
@@ -73,37 +80,35 @@ public:
         }
 
         Iterator& operator=(const Iterator &rhs) {
-            Iterator(rhs.element,rhs.size);
-            this->counter = rhs.counter;
+            Iterator(rhs.arr,rhs.size);
+            this->counter=rhs.counter;
             return *this;
         }
 
         Iterator& operator++(){
-            while(counter<size){
-                element++;
-                counter++;
-                if(element != NULL)
-                    break;
-            }
-            if(counter == size){
-                element = NULL;
+            if(arr == nullptr)
+                return *this;
+
+            while((++counter)<size && arr[counter] == nullptr);
+
+            if(counter >= size){
+                arr = nullptr;
             }
             return *this;
         }
 
         Element& operator*(){
-            return *element;
+            return *arr[counter];
         }
     };
 
     Iterator begin() const{
-        Iterator i((*arr)-1,size+1);
-        ++i;
+        Iterator i(arr ,size);
         return i;
     }
 
     Iterator end() const{
-        return Iterator(NULL,0);
+        return Iterator(nullptr,0);
     }
 };
 
