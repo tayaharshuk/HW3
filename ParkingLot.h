@@ -76,9 +76,24 @@ namespace MtmParkingLot {
 
 
     private:
-
+        /**
+         *
+         * @param licensePlate
+         * @param time
+         * @return parking result
+         * NO_EMPTY_SPOT- if there is not any place to park the motorbike.
+         * SUCCESS - if the motorbike was parked successfully.
+         *
+         */
         ParkingResult enterMotor(LicensePlate &licensePlate, Time &time);
-
+        /**
+         * enters the car to its own parking block.
+         * @param licensePlate
+         * @param time
+         * @return
+         * NO_EMPTY_SPOT- if there is not any place to park the car.
+         * SUCCESS - if the car was parked successfully.
+         */
         ParkingResult enterCar(LicensePlate &licensePlate, Time &time);
 
         ParkingResult enterHandicapped(LicensePlate &licensePlate, Time &time);

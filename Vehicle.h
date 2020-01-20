@@ -12,7 +12,7 @@ namespace MtmParkingLot {
      *
      */
     class Vehicle {
-        //TODO: the reason it is marked is because we need to convert it into a string?
+
     protected:
         LicensePlate licensePlate;
         Time entranceTime;
