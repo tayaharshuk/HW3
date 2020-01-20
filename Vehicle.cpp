@@ -77,6 +77,9 @@ unsigned int Vehicle::getNumOfTickets() const {
     return numOfTickets;
 }
 
+/**
+ *
+ */
 void Vehicle::setTicket() {
     numOfTickets = 1;
 }
