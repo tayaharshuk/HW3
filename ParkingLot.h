@@ -38,7 +38,6 @@ namespace MtmParkingLot {
         friend ostream &operator<<(ostream &os, const ParkingLot &parkingLot){
         ParkingLotPrinter::printParkingLotTitle(std::cout);
 
-        //ParkingLotPrinter::printVehicle();
 
         for (UniqueArray<Vehicle, CompareVehicle>::Iterator i = parkingLot.motorParkingBlock.begin();
             i != parkingLot.motorParkingBlock.end(); ++i) {
@@ -76,7 +75,8 @@ namespace MtmParkingLot {
 
 
     private:
-        /**
+        /**checks for an empty place and if there is- enters the motorbike into its own
+         * parking block.
          *
          * @param licensePlate
          * @param time
@@ -87,7 +87,8 @@ namespace MtmParkingLot {
          */
         ParkingResult enterMotor(LicensePlate &licensePlate, Time &time);
         /**
-         * enters the car to its own parking block.
+         *checks for an empty place and if there is- enters the car into its own
+         * parking block.
          * @param licensePlate
          * @param time
          * @return
@@ -96,16 +97,44 @@ namespace MtmParkingLot {
          */
         ParkingResult enterCar(LicensePlate &licensePlate, Time &time);
 
+        /**checks for an empty place and if there is- enters the handicapped into its own
+         * parking block.
+         *
+         * @param licensePlate
+         * @param time
+         * @return
+         * NO_EMPTY_SPOT- if there is not any place to park the handicapped.(checks
+         * for the car parking block too)
+         * SUCCESS - if the handicapped was parked successfully.
+         */
         ParkingResult enterHandicapped(LicensePlate &licensePlate, Time &time);
 
+        /**
+         * checks if the vehicle exists in the parking lot.(doesn't matter in which block)
+         * @param licensePlate
+         * @param parkingSpot
+         * @return
+         * true - if the vehicle exists
+         * false - if the vehicle does not exist in the parking lot
+         */
         bool vehicleAlreadyExists(LicensePlate &licensePlate,
-                                  ParkingSpot* parkingSpot) const; //todo:const
-
+                                  ParkingSpot* parkingSpot) const;
+        /**
+         * searches for a specific vehicle in the parking lot by its license
+         * @param parkingSpot
+         * @param licensePlate
+         * @return a pointer to the wanted vehicle
+         *
+         */
         const Vehicle* getVehicle(const ParkingSpot& parkingSpot,
                                       const LicensePlate& licensePlate) const ;
     };
     //end of parkingLot class
 
+
+    /**
+     *
+     */
     class ticketFilter :
             public UniqueArray<Vehicle, CompareVehicle>::Filter {
 
@@ -116,26 +145,6 @@ namespace MtmParkingLot {
         bool operator()(const Vehicle &element) const override;
     };
 
-
-
-/*class LicensePlateFilter: public UniqueArray<Vehicle, CompareVehicle>::Filter {
-    LicensePlate licensePlate;
-public:
-    const LicensePlate &getLicensePlate() const {
-        return licensePlate;
-    }
-
-    void setLicensePlate(const LicensePlate &_licensePlate) {
-        licensePlate = _licensePlate;
-    }
-
-    bool operator()(const Vehicle &element) const override {
-        return licensePlate == element.getLicensePlate();
-    }
-};
-
-LicensePlateFilter filter;
-*/
 }
 
 #endif //MTMPARKINGLOT_PARKINGLOT_H

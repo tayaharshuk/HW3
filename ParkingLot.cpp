@@ -229,9 +229,8 @@ const Vehicle* ParkingLot::getVehicle(const ParkingSpot& parkingSpot,
             return motorParkingBlock[Motorbike(licensePlate,Time())];
         case CAR:
             return carParkingBlock[Car(licensePlate,Time())];
-        case HANDICAPPED:
+        default:
             return handicappedParkingBlock[Handicapped(licensePlate,Time())];
     }
-    return nullptr;
 }
-//Filter class
+
