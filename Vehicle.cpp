@@ -84,11 +84,6 @@ void Vehicle::setTicket() {
     numOfTickets = 1;
 }
 
-void Vehicle::checkForTicket(Time &inspectionTime) {
-    if ((inspectionTime - entranceTime).toHours() >= 24) //todo: >= or > ?
-        setTicket();
-}
-
 const Time &Vehicle::getEntranceTime() const {
     return entranceTime;
 }
