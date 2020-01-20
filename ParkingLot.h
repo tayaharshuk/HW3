@@ -132,8 +132,9 @@ namespace MtmParkingLot {
     //end of parkingLot class
 
 
-    /**
-     *
+    /** ticketFilter
+     * function object that derives from UniqueArray filter
+     * the class will help get only the vehicles that need to be tickets.
      */
     class ticketFilter :
             public UniqueArray<Vehicle, CompareVehicle>::Filter {
